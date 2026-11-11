@@ -1,7 +1,18 @@
 import axios from 'axios';
 
+function resolveApiBaseUrl() {
+  const envUrl = import.meta.env.VITE_API_URL?.trim();
+  if (envUrl) {
+    const cleanUrl = envUrl.replace(/\/+$/, '');
+    return cleanUrl.endsWith('/api') ? cleanUrl : `${cleanUrl}/api`;
+  }
+  return import.meta.env.DEV ? '/api' : 'https://minimart-g04m.onrender.com/api';
+}
+
+const API_BASE_URL = resolveApiBaseUrl();
+
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: API_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -29,7 +40,7 @@ api.interceptors.response.use(
       const refreshToken = localStorage.getItem('minimart_refresh_token');
       if (refreshToken) {
         try {
-          const res = await axios.post('/api/auth/refresh', { refresh_token: refreshToken });
+          const res = await axios.post(`${API_BASE_URL}/auth/refresh`, { refresh_token: refreshToken });
           const newAccessToken = res.data.access_token;
           const newRefreshToken = res.data.refresh_token;
           localStorage.setItem('minimart_token', newAccessToken);
