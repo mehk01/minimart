@@ -50,7 +50,7 @@ export default function AuthModal() {
   return (
     <div className="modal-overlay" onClick={() => setIsAuthModalOpen(false)}>
       <div
-        className="liquid-glass-modal w-full max-w-md rounded-3xl overflow-hidden p-6 sm:p-8 animate-fade-in relative"
+        className="liquid-glass-modal w-full max-w-md rounded-3xl max-h-[92vh] overflow-y-auto p-6 sm:p-8 animate-fade-in relative"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -75,19 +75,6 @@ export default function AuthModal() {
           <p className="text-xs text-slate-500 mt-1">
             {tab === 'login' ? 'Sign in to access your orders and saved basket' : 'Join MiniMart for 15-minute grocery delivery'}
           </p>
-        </div>
-
-        {/* Google Sign-In */}
-        <div className="mb-4">
-          <GoogleSignInButton onCredential={handleGoogleCredential} disabled={isLoading} />
-        </div>
-
-        <div className="relative flex items-center justify-center mb-4">
-          <div className="border-t border-slate-200 w-full"></div>
-          <span className="bg-white/90 px-3 text-[10px] font-bold uppercase tracking-wider text-slate-400 whitespace-nowrap">
-            or use email
-          </span>
-          <div className="border-t border-slate-200 w-full"></div>
         </div>
 
         {/* 1-Click Demo Buttons */}
@@ -226,6 +213,19 @@ export default function AuthModal() {
             {isLoading ? 'Please wait...' : tab === 'login' ? 'Sign In to MiniMart' : 'Create Free Account'}
           </button>
         </form>
+
+        {/* Google Sign-In */}
+        <div className="relative flex items-center justify-center my-4">
+          <div className="border-t border-slate-200 w-full"></div>
+          <span className="bg-white/90 px-3 text-[10px] font-bold uppercase tracking-wider text-slate-400 whitespace-nowrap">
+            or
+          </span>
+          <div className="border-t border-slate-200 w-full"></div>
+        </div>
+
+        <div>
+          <GoogleSignInButton onCredential={handleGoogleCredential} disabled={isLoading} />
+        </div>
 
       </div>
     </div>
