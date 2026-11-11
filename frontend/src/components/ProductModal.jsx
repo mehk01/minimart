@@ -72,20 +72,20 @@ export default function ProductModal() {
   return (
     <div className="modal-overlay" onClick={() => setSelectedProduct(null)}>
       <div
-        className="liquid-glass-modal w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row animate-fade-in relative max-h-[90vh]"
+        className="liquid-glass-modal w-full max-w-2xl rounded-2xl sm:rounded-3xl shadow-2xl overflow-y-auto md:overflow-hidden flex flex-col md:flex-row animate-fade-in relative max-h-[90vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={() => setSelectedProduct(null)}
-          className="absolute top-4 right-4 z-20 w-9 h-9 rounded-full liquid-glass hover:bg-white text-slate-500 hover:text-slate-800 flex items-center justify-center transition-all shadow-sm active:scale-95"
+          className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 w-9 h-9 rounded-full liquid-glass hover:bg-white text-slate-500 hover:text-slate-800 flex items-center justify-center transition-all shadow-sm active:scale-95"
           aria-label="Close dialog"
         >
           <X className="w-4 h-4" />
         </button>
 
         {/* Media Left Column */}
-        <div className="w-full md:w-1/2 bg-slate-50/60 backdrop-blur-md relative flex items-center justify-center p-6 md:p-8 flex-shrink-0">
+        <div className="w-full md:w-1/2 bg-slate-50/60 backdrop-blur-md relative flex items-center justify-center p-4 sm:p-6 md:p-8 flex-shrink-0">
           {discountPercent > 0 && (
             <span className="absolute top-4 left-4 z-10 badge badge-sale text-xs px-2.5 py-1 rounded-full font-extrabold shadow-sm border border-red-200">
               Save {discountPercent}%
@@ -94,7 +94,7 @@ export default function ProductModal() {
           <img
             src={product.image_url || 'https://images.unsplash.com/photo-1508779018996-601e37fa274e?auto=format&fit=crop&w=600&q=80'}
             alt={product.name}
-            className="w-full h-64 md:h-80 object-cover rounded-2xl shadow-sm"
+            className="w-full h-52 sm:h-64 md:h-80 object-cover rounded-2xl shadow-sm"
             onError={(e) => {
               e.currentTarget.onerror = null;
               e.currentTarget.src = 'https://images.unsplash.com/photo-1508779018996-601e37fa274e?auto=format&fit=crop&w=600&q=80';

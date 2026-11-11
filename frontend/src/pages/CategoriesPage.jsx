@@ -44,15 +44,15 @@ export default function CategoriesPage() {
   }, [selectedCat]);
 
   return (
-    <div className="space-y-8 pb-16">
+    <div className="space-y-6 sm:space-y-8 pb-4 md:pb-16">
       
       {/* Header */}
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center shadow-sm border border-blue-200">
+        <div className="w-10 h-10 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center shadow-sm border border-blue-200 flex-shrink-0">
           <Layers className="w-5 h-5" />
         </div>
-        <div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-heading">
+        <div className="min-w-0">
+          <h1 className="text-xl sm:text-3xl font-extrabold text-slate-900 font-heading">
             Grocery Departments & Aisles
           </h1>
           <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
@@ -69,7 +69,7 @@ export default function CategoriesPage() {
             <button
               key={cat.id}
               onClick={() => setSelectedCat(cat)}
-              className={`liquid-glass-card p-4 rounded-3xl text-left transition-all duration-250 ease-out flex flex-col justify-between h-40 sm:h-44 relative overflow-hidden group active:scale-95 ${
+              className={`liquid-glass-card p-3 sm:p-4 rounded-2xl sm:rounded-3xl text-left transition-all duration-250 ease-out flex flex-col justify-between h-36 sm:h-44 min-w-0 relative overflow-hidden group active:scale-95 ${
                 isSelected
                   ? 'border-blue-600 shadow-lg ring-2 ring-blue-600/20'
                   : 'hover:shadow-xl'
@@ -78,16 +78,16 @@ export default function CategoriesPage() {
               {isSelected && (
                 <motion.div
                   layoutId="activeAisleCardPill"
-                  className="absolute inset-0 bg-blue-50/75 rounded-3xl -z-10"
+                  className="absolute inset-0 bg-blue-50/75 rounded-2xl sm:rounded-3xl -z-10"
                   transition={{ type: 'spring', stiffness: 450, damping: 32 }}
                 />
               )}
 
-              <div className="relative z-10">
+              <div className="relative z-10 pr-5">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
                   Department
                 </span>
-                <h3 className={`text-sm sm:text-base font-extrabold mt-0.5 line-clamp-2 font-heading transition-colors duration-250 ${
+                <h3 className={`text-[13px] sm:text-base font-extrabold mt-0.5 line-clamp-2 font-heading transition-colors duration-250 ${
                   isSelected ? 'text-blue-900' : 'text-slate-800'
                 }`}>
                   {cat.name}
@@ -95,7 +95,7 @@ export default function CategoriesPage() {
               </div>
 
               {/* Thumbnail */}
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden self-end shadow-sm group-hover:scale-105 transition-transform border border-white/60">
+              <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl overflow-hidden self-end shadow-sm group-hover:scale-105 transition-transform border border-white/60 flex-shrink-0">
                 <img
                   src={cat.image_url}
                   alt={cat.name}
@@ -104,7 +104,7 @@ export default function CategoriesPage() {
               </div>
 
               {isSelected && (
-                <div className="absolute top-3 right-3 w-5 h-5 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-sm">
+                <div className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 w-5 h-5 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-sm">
                   <CheckCircle2 className="w-3.5 h-3.5" />
                 </div>
               )}
@@ -116,26 +116,26 @@ export default function CategoriesPage() {
       {/* Selected Department Products */}
       {selectedCat && (
         <section className="space-y-4 pt-4 border-t border-slate-200">
-          <div className="flex items-center justify-between">
-            <div>
-              <h2 className="text-xl font-extrabold text-slate-900 font-heading">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <div className="min-w-0">
+              <h2 className="text-lg sm:text-xl font-extrabold text-slate-900 font-heading">
                 {selectedCat.name} Products
               </h2>
               <p className="text-xs text-slate-500">{selectedCat.description}</p>
             </div>
-            <span className="text-xs font-bold text-slate-500 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">
+            <span className="text-xs font-bold text-slate-500 bg-slate-100 px-3 py-1 rounded-full border border-slate-200 flex-shrink-0">
               {products.length} items
             </span>
           </div>
 
           {loading ? (
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+            <div className="product-grid">
               {[...Array(4)].map((_, i) => (
                 <div key={i} className="bg-white border border-slate-200 rounded-2xl h-64 animate-pulse p-4"></div>
               ))}
             </div>
           ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-5">
+            <div className="product-grid">
               {products.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}

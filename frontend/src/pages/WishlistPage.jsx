@@ -47,16 +47,16 @@ export default function WishlistPage() {
   };
 
   return (
-    <div className="space-y-6 pb-20">
+    <div className="space-y-6 pb-4 md:pb-16">
       
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200">
         <div>
           <div className="flex items-center gap-2.5">
-            <div className="w-10 h-10 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center border border-red-200 shadow-sm">
+            <div className="w-10 h-10 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center border border-red-200 shadow-sm flex-shrink-0">
               <Heart className="w-5 h-5 fill-red-500 text-red-500" />
             </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-heading">
+            <h1 className="text-xl sm:text-3xl font-extrabold text-slate-900 font-heading">
               My Saved Favorites
             </h1>
           </div>
@@ -78,7 +78,7 @@ export default function WishlistPage() {
 
       {/* Grid */}
       {loading ? (
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="product-grid">
           {[...Array(4)].map((_, i) => (
             <div key={i} className="bg-white border border-slate-200 rounded-3xl h-64 animate-pulse p-4"></div>
           ))}
@@ -98,7 +98,7 @@ export default function WishlistPage() {
           </Link>
         </div>
       ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-5">
+        <div className="product-grid">
           {favoriteProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

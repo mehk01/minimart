@@ -130,7 +130,7 @@ export default function Header() {
 
   // Reusable Suggestions Dropdown (works on both mobile full-width & desktop)
   const renderSearchDropdown = () => (
-    <div className="absolute top-full left-0 mt-2 bg-white rounded-2xl shadow-2xl border border-slate-200/90 p-4 sm:p-5 z-50 animate-fade-in space-y-4 max-h-[75vh] overflow-y-auto w-full md:w-[380px] min-w-[280px]">
+    <div className="absolute top-full left-0 mt-2 bg-white rounded-2xl shadow-2xl border border-slate-200/90 p-3.5 sm:p-5 z-50 animate-fade-in space-y-4 max-h-[75vh] overflow-y-auto w-full md:w-[380px] max-w-full">
       {/* Live Exact & Closely Related Matching Products */}
       {searchQuery.trim().length >= 1 ? (
         <div>
@@ -251,11 +251,11 @@ export default function Header() {
         />
       )}
 
-      <header className={`sticky top-0 transition-all print:hidden ${isSearchFocused ? 'z-50 bg-white/95 shadow-lg' : 'z-40 liquid-glass-header'}`}>
+      <header className={`sticky top-0 w-full transition-all print:hidden ${isSearchFocused ? 'z-50 bg-white/95 shadow-lg' : 'z-40 liquid-glass-header'}`}>
         {/* Top micro-announcement bar */}
-        <div className="bg-gradient-to-r from-blue-700 via-indigo-700 to-blue-600 text-white text-xs py-1.5 px-4 text-center font-medium flex items-center justify-center gap-2 border-b border-white/10">
-          <span className="bg-amber-400 text-slate-900 font-extrabold px-2 py-0.5 rounded-full text-[10px] uppercase tracking-wider shadow-sm flex items-center gap-1">
-            <Zap className="w-3 h-3 fill-slate-900 text-slate-900" />
+        <div className="bg-gradient-to-r from-blue-700 via-indigo-700 to-blue-600 text-white text-[11px] sm:text-xs py-1.5 px-2.5 sm:px-4 text-center font-medium flex flex-wrap items-center justify-center gap-x-1.5 gap-y-0.5 border-b border-white/10 safe-top safe-x">
+          <span className="bg-amber-400 text-slate-900 font-extrabold px-1.5 sm:px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] uppercase tracking-wider shadow-sm inline-flex items-center gap-1 flex-shrink-0">
+            <Zap className="w-2.5 h-2.5 sm:w-3 sm:h-3 fill-slate-900 text-slate-900" />
             Flash Deal
           </span>
           <span>Use code <strong>SAVE20</strong> for 20% off your entire basket!</span>
@@ -265,10 +265,10 @@ export default function Header() {
           </span>
         </div>
 
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-2.5 min-[360px]:px-3 sm:px-6 lg:px-8 safe-x">
           
           {/* Main Top Navigation Row */}
-          <div className="flex items-center justify-between h-16 sm:h-20 gap-2 sm:gap-4">
+          <div className="flex items-center justify-between h-14 sm:h-20 gap-1.5 sm:gap-4 min-w-0">
             
             {/* Brand Logo & Location Pill */}
             <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
@@ -276,7 +276,7 @@ export default function Header() {
                 <img
                   src="/logo.png"
                   alt="MiniMart - Fresh & Fast In Minutes"
-                  className="h-9 sm:h-11 w-auto max-w-[130px] sm:max-w-[160px] object-contain transition-transform duration-200 group-hover:scale-105"
+                  className="h-7 min-[360px]:h-8 sm:h-11 w-auto max-w-[100px] min-[360px]:max-w-[125px] sm:max-w-[160px] object-contain transition-transform duration-200 group-hover:scale-105"
                 />
               </Link>
 
@@ -304,7 +304,7 @@ export default function Header() {
             {/* Desktop Compact Search Bar (Hidden on Mobile < md) */}
             <div
               ref={desktopSearchRef}
-              className={`hidden md:block w-48 lg:w-64 max-w-xs mx-2 lg:mx-3 transition-all duration-200 ${
+              className={`hidden md:block flex-1 min-w-[140px] max-w-[260px] mx-2 lg:mx-3 transition-all duration-200 ${
                 isSearchFocused ? 'relative z-50' : 'relative'
               }`}
             >
@@ -347,7 +347,7 @@ export default function Header() {
             </div>
 
             {/* Actions: Navigation Links & User & Cart */}
-            <div className="flex items-center gap-1.5 sm:gap-3 flex-shrink-0">
+            <div className="flex items-center gap-1 min-[360px]:gap-1.5 sm:gap-3 flex-shrink-0">
               
               {/* Mobile Search Button (< md): Compact, perfectly centered icon */}
               <button
@@ -402,10 +402,11 @@ export default function Header() {
 
               {/* User Profile or Login */}
               {isAuthenticated && user ? (
-                <div className="relative">
+                <div className="relative flex-shrink-0">
                   <button
                     onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                    className="flex items-center gap-1.5 sm:gap-2 h-9 sm:h-11 px-2 sm:px-3 rounded-full hover:bg-slate-100 transition-colors text-slate-700 border border-transparent hover:border-slate-200"
+                    className="flex items-center gap-1.5 sm:gap-2 h-8 min-[360px]:h-9 sm:h-11 px-1 sm:px-3 rounded-full hover:bg-slate-100 transition-colors text-slate-700 border border-transparent hover:border-slate-200"
+                    aria-label="Account menu"
                   >
                     <img
                       src={user.avatar_url || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80'}
@@ -470,10 +471,11 @@ export default function Header() {
                   )}
                 </div>
               ) : (
-                <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-1 sm:gap-1.5 flex-shrink-0">
                   <button
                     onClick={() => setIsAuthModalOpen(true)}
-                    className="flex items-center gap-1 h-9 sm:h-11 px-2.5 sm:px-3 text-xs font-bold text-slate-700 hover:text-blue-600 rounded-full transition-colors hover:bg-slate-100 flex-shrink-0"
+                    className="flex items-center justify-center gap-1 h-8 min-[360px]:h-9 sm:h-11 px-2 min-[360px]:px-2.5 sm:px-3 text-xs font-bold text-slate-700 hover:text-blue-600 rounded-full transition-colors hover:bg-slate-100 flex-shrink-0"
+                    aria-label="Sign in"
                   >
                     <User className="w-4 h-4 text-slate-500" />
                     <span className="hidden sm:inline">Sign In</span>
@@ -492,18 +494,18 @@ export default function Header() {
               {/* Cart Button */}
               <button
                 onClick={() => setIsCartOpen(true)}
-                className="relative flex items-center gap-1.5 sm:gap-2 h-9 sm:h-11 btn-primary font-bold px-3 sm:px-4 rounded-full shadow-md shadow-blue-600/25 active:scale-95 transition-all flex-shrink-0"
+                className="relative flex items-center gap-1.5 sm:gap-2 h-8 min-[360px]:h-9 sm:h-11 btn-primary font-bold px-2.5 min-[360px]:px-3 sm:px-4 rounded-full shadow-md shadow-blue-600/25 active:scale-95 transition-all flex-shrink-0 whitespace-nowrap"
                 aria-label="View shopping cart"
               >
                 <div className="relative flex items-center">
-                  <ShoppingCart className="w-4 h-4 text-white" />
+                  <ShoppingCart className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
                   {getCartCount() > 0 && (
-                    <span className="absolute -top-2 -right-2.5 bg-amber-400 text-slate-900 font-extrabold text-[10px] w-4 h-4 rounded-full flex items-center justify-center leading-none ring-2 ring-blue-700 shadow-sm animate-bounce">
+                    <span className="absolute -top-2 -right-2 bg-amber-400 text-slate-900 font-extrabold text-[9px] sm:text-[10px] w-4 h-4 rounded-full flex items-center justify-center leading-none ring-2 ring-blue-700 shadow-sm animate-bounce">
                       {getCartCount()}
                     </span>
                   )}
                 </div>
-                <span className="text-xs font-extrabold">
+                <span className="text-[11px] min-[360px]:text-xs font-extrabold">
                   {formatINR(getCartTotal())}
                 </span>
               </button>

@@ -28,7 +28,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/25 to-slate-100/70 text-slate-800 flex flex-col font-sans selection:bg-blue-600 selection:text-white relative">
+      <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-gradient-to-br from-slate-50 via-blue-50/25 to-slate-100/70 text-slate-800 flex flex-col font-sans selection:bg-blue-600 selection:text-white relative">
         
         {/* Apple Liquid Glass Ambient Light Mesh Orbs */}
         <div className="liquid-mesh-bg print:hidden" aria-hidden="true">
@@ -42,7 +42,7 @@ export default function App() {
         <Header />
 
         {/* Content Container */}
-        <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 relative z-10 print:p-0 print:m-0 print:max-w-none">
+        <main className="flex-1 max-w-7xl w-full min-w-0 mx-auto px-3 sm:px-6 lg:px-8 pt-3 sm:pt-6 main-content-safe relative z-10 print:p-0 print:m-0 print:max-w-none">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/categories" element={<CategoriesPage />} />

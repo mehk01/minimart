@@ -50,7 +50,7 @@ export default function AuthModal() {
   return (
     <div className="modal-overlay" onClick={() => setIsAuthModalOpen(false)}>
       <div
-        className="liquid-glass-modal w-full max-w-md rounded-3xl max-h-[92vh] overflow-y-auto p-6 sm:p-8 animate-fade-in relative"
+        className="liquid-glass-modal w-full max-w-md rounded-2xl sm:rounded-3xl max-h-[92vh] overflow-y-auto p-5 sm:p-8 animate-fade-in relative"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -63,11 +63,11 @@ export default function AuthModal() {
         </button>
 
         {/* Brand header */}
-        <div className="text-center mb-6">
+        <div className="text-center mb-5 sm:mb-6">
           <img
             src="/logo.png"
             alt="MiniMart"
-            className="h-14 sm:h-16 w-auto mx-auto object-contain mb-3 drop-shadow-sm"
+            className="h-12 sm:h-16 w-auto mx-auto object-contain mb-3 drop-shadow-sm"
           />
           <h2 className="text-xl font-extrabold text-slate-900 font-heading">
             {tab === 'login' ? 'Welcome Back' : 'Create an Account'}
@@ -78,7 +78,7 @@ export default function AuthModal() {
         </div>
 
         {/* 1-Click Demo Buttons */}
-        <div className="mb-6 p-3.5 liquid-glass rounded-2xl border border-blue-200/60 shadow-sm">
+        <div className="mb-5 sm:mb-6 p-3 sm:p-3.5 liquid-glass rounded-2xl border border-blue-200/60 shadow-sm">
           <span className="text-[11px] font-bold text-blue-900 uppercase tracking-wider block mb-2 text-center flex items-center justify-center gap-1.5">
             <Zap className="w-3.5 h-3.5 fill-blue-600 text-blue-600" />
             Quick 1-Click Demo Accounts
@@ -88,19 +88,19 @@ export default function AuthModal() {
               type="button"
               onClick={() => handleDemo('customer')}
               disabled={isLoading}
-              className="btn btn-secondary text-xs py-2 rounded-xl font-bold border-blue-200 hover:border-blue-300 bg-white shadow-sm flex items-center justify-center gap-1.5 active:scale-95"
+              className="btn btn-secondary text-[11px] sm:text-xs px-2 sm:px-3 py-2 rounded-xl font-bold border-blue-200 hover:border-blue-300 bg-white shadow-sm flex items-center justify-center gap-1 sm:gap-1.5 active:scale-95 whitespace-nowrap"
             >
-              <User className="w-4 h-4 text-blue-600" />
-              <span>Demo Customer</span>
+              <User className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-600 flex-shrink-0" />
+              <span className="truncate">Demo Customer</span>
             </button>
             <button
               type="button"
               onClick={() => handleDemo('admin')}
               disabled={isLoading}
-              className="btn btn-secondary text-xs py-2 rounded-xl font-bold border-blue-200 hover:border-blue-300 bg-white shadow-sm flex items-center justify-center gap-1.5 active:scale-95"
+              className="btn btn-secondary text-[11px] sm:text-xs px-2 sm:px-3 py-2 rounded-xl font-bold border-blue-200 hover:border-blue-300 bg-white shadow-sm flex items-center justify-center gap-1 sm:gap-1.5 active:scale-95 whitespace-nowrap"
             >
-              <Crown className="w-4 h-4 text-amber-500 fill-amber-500" />
-              <span>Demo Admin</span>
+              <Crown className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-500 fill-amber-500 flex-shrink-0" />
+              <span className="truncate">Demo Admin</span>
             </button>
           </div>
         </div>

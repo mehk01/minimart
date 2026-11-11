@@ -163,10 +163,10 @@ export default function OrderTrackingPage() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto space-y-6 pb-20 print:p-0 print:m-0 print:space-y-0 print:max-w-none">
+    <div className="max-w-3xl mx-auto space-y-5 sm:space-y-6 pb-4 md:pb-16 print:p-0 print:m-0 print:space-y-0 print:max-w-none">
       
       {/* Top Bar Navigation (Hidden in Print/PDF) */}
-      <div className="flex items-center justify-between print:hidden">
+      <div className="flex flex-wrap items-center justify-between gap-2 print:hidden">
         <Link to="/orders" className="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1.5">
           <ArrowLeft className="w-4 h-4" />
           <span>Back to All Orders</span>
@@ -178,12 +178,12 @@ export default function OrderTrackingPage() {
       </div>
 
       {/* Live Simulation Demo Controls (Hidden in Print/PDF) */}
-      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200/80 rounded-2xl p-3 flex flex-wrap items-center justify-between gap-3 text-xs print:hidden shadow-sm">
+      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200/80 rounded-2xl p-3 flex flex-wrap items-center justify-between gap-2.5 sm:gap-3 text-xs print:hidden shadow-sm">
         <div className="flex items-center gap-2 text-blue-900 font-bold">
           <Clock className="w-4 h-4 text-blue-600" />
           <span>Live Stage Simulation:</span>
         </div>
-        <div className="flex items-center gap-1.5 p-1 bg-white/70 rounded-full border border-blue-200/50 shadow-inner">
+        <div className="flex flex-wrap items-center gap-1 sm:gap-1.5 p-1 bg-white/70 rounded-2xl sm:rounded-full border border-blue-200/50 shadow-inner max-w-full">
           {[
             { s: 1, label: '1. Confirmed', icon: null },
             { s: 2, label: '2. Packing', icon: null },
@@ -196,7 +196,7 @@ export default function OrderTrackingPage() {
               <button
                 key={item.s}
                 onClick={() => handleSimulateStep(item.s)}
-                className={`relative px-3.5 py-1.5 rounded-full font-bold transition-colors duration-250 ease-out active:scale-95 text-xs flex items-center gap-1.5 z-10 cursor-pointer ${
+                className={`relative px-2.5 sm:px-3.5 py-1.5 rounded-full font-bold transition-colors duration-250 ease-out active:scale-95 text-[11px] sm:text-xs flex items-center gap-1 sm:gap-1.5 z-10 cursor-pointer whitespace-nowrap ${
                   isSelected ? 'text-white' : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -220,16 +220,16 @@ export default function OrderTrackingPage() {
       </div>
 
       {/* Main Delivery Map & Courier Card (Strictly Hidden in Print/PDF) */}
-      <div className="liquid-glass-card rounded-3xl shadow-xl overflow-hidden print:hidden">
+      <div className="liquid-glass-card rounded-2xl sm:rounded-3xl shadow-xl overflow-hidden print:hidden">
         
         {/* Animated Map Graphic Container */}
-        <div className="relative bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 h-64 sm:h-72 p-6 overflow-hidden flex flex-col justify-between">
+        <div className="relative bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 h-56 sm:h-72 p-3.5 sm:p-6 overflow-hidden flex flex-col justify-between">
           
           {/* Stylized Map Grid Overlay */}
           <div className="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,#38bdf8_1px,transparent_1px),linear-gradient(to_bottom,#38bdf8_1px,transparent_1px)] bg-[size:32px_32px]"></div>
 
           {/* Road Path Line */}
-          <div className="absolute top-1/2 left-12 right-12 h-2.5 bg-slate-700/80 rounded-full -translate-y-1/2 overflow-hidden shadow-inner">
+          <div className="absolute top-1/2 left-10 right-10 sm:left-12 sm:right-12 h-2.5 bg-slate-700/80 rounded-full -translate-y-1/2 overflow-hidden shadow-inner">
             <div
               className="h-full bg-gradient-to-r from-blue-500 via-emerald-400 to-amber-400 rounded-full transition-all duration-1000 shadow-sm"
               style={{ width: `${riderProgress}%` }}
@@ -237,19 +237,19 @@ export default function OrderTrackingPage() {
           </div>
 
           {/* Hub Icon (Start) */}
-          <div className="absolute top-1/2 left-8 -translate-y-1/2 z-10 flex flex-col items-center">
-            <div className="w-11 h-11 rounded-2xl bg-blue-600 text-white flex items-center justify-center shadow-lg shadow-blue-500/50 ring-4 ring-blue-900/60 border border-white/20">
-              <Store className="w-5 h-5 text-white" />
+          <div className="absolute top-1/2 left-4 sm:left-8 -translate-y-1/2 z-10 flex flex-col items-center">
+            <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-blue-600 text-white flex items-center justify-center shadow-lg shadow-blue-500/50 ring-4 ring-blue-900/60 border border-white/20">
+              <Store className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
             </div>
-            <span className="text-[10px] font-bold text-blue-200 mt-1.5 whitespace-nowrap">Springfield Hub</span>
+            <span className="text-[9px] sm:text-[10px] font-bold text-blue-200 mt-1.5 whitespace-nowrap">Springfield Hub</span>
           </div>
 
           {/* Customer House Icon (Destination) */}
-          <div className="absolute top-1/2 right-8 -translate-y-1/2 z-10 flex flex-col items-center">
-            <div className="w-11 h-11 rounded-2xl bg-emerald-600 text-white flex items-center justify-center shadow-lg shadow-emerald-500/50 ring-4 ring-emerald-900/60 border border-white/20">
-              <Home className="w-5 h-5 text-white" />
+          <div className="absolute top-1/2 right-4 sm:right-8 -translate-y-1/2 z-10 flex flex-col items-center">
+            <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-emerald-600 text-white flex items-center justify-center shadow-lg shadow-emerald-500/50 ring-4 ring-emerald-900/60 border border-white/20">
+              <Home className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
             </div>
-            <span className="text-[10px] font-bold text-emerald-200 mt-1.5 whitespace-nowrap">Your Home</span>
+            <span className="text-[9px] sm:text-[10px] font-bold text-emerald-200 mt-1.5 whitespace-nowrap">Your Home</span>
           </div>
 
           {/* Moving Scooter Marker */}
@@ -257,104 +257,104 @@ export default function OrderTrackingPage() {
             className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 z-20 transition-all duration-1000 flex flex-col items-center"
             style={{ left: `calc(10% + ${riderProgress * 0.8}%)` }}
           >
-            <div className="bg-amber-400 text-slate-900 p-2.5 rounded-2xl shadow-xl shadow-amber-400/50 ring-4 ring-white animate-bounce flex items-center justify-center">
-              <Truck className="w-5 h-5 text-slate-900" />
+            <div className="bg-amber-400 text-slate-900 p-2 sm:p-2.5 rounded-xl sm:rounded-2xl shadow-xl shadow-amber-400/50 ring-4 ring-white animate-bounce flex items-center justify-center">
+              <Truck className="w-4 h-4 sm:w-5 sm:h-5 text-slate-900" />
             </div>
-            <span className="bg-slate-900/95 text-amber-300 font-extrabold text-[9px] px-2.5 py-0.5 rounded-full mt-1 border border-amber-400/40 whitespace-nowrap shadow-md">
+            <span className="bg-slate-900/95 text-amber-300 font-extrabold text-[9px] px-2 sm:px-2.5 py-0.5 rounded-full mt-1 border border-amber-400/40 whitespace-nowrap shadow-md">
               Marco ({etaMinutes}m)
             </span>
           </div>
 
           {/* Top ETA Badge inside Map */}
-          <div className="relative z-10 flex items-center justify-between">
-            <div className="bg-black/50 backdrop-blur-md px-3.5 py-1.5 rounded-full text-white text-xs font-bold border border-white/15 flex items-center gap-2 shadow-sm">
+          <div className="relative z-10 flex flex-wrap items-center justify-between gap-1.5">
+            <div className="bg-black/50 backdrop-blur-md px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-white text-[11px] sm:text-xs font-bold border border-white/15 flex items-center gap-1.5 sm:gap-2 shadow-sm">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
               <span>Order #{order?.order_number || 'MM-892401'}</span>
             </div>
 
-            <div className="bg-emerald-500/90 backdrop-blur-md px-3.5 py-1.5 rounded-full text-white text-xs font-extrabold shadow-lg flex items-center gap-1.5 border border-white/20">
-              <Clock className="w-4 h-4" />
-              <span>Arriving in ~{etaMinutes} mins</span>
+            <div className="bg-emerald-500/90 backdrop-blur-md px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-white text-[11px] sm:text-xs font-extrabold shadow-lg flex items-center gap-1 sm:gap-1.5 border border-white/20">
+              <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <span>~{etaMinutes} mins</span>
             </div>
           </div>
 
           {/* Bottom Destination Info */}
-          <div className="relative z-10 flex items-center justify-between text-xs text-slate-300 font-medium">
-            <span className="flex items-center gap-1">
-              <MapPin className="w-3.5 h-3.5 text-blue-400" />
-              Destination: <strong className="text-white ml-0.5">{deliveryLocation.address}</strong>
+          <div className="relative z-10 flex flex-wrap items-center justify-between gap-1.5 text-[11px] sm:text-xs text-slate-300 font-medium">
+            <span className="flex items-center gap-1 min-w-0 max-w-full">
+              <MapPin className="w-3.5 h-3.5 text-blue-400 flex-shrink-0" />
+              <span className="truncate">Destination: <strong className="text-white ml-0.5">{deliveryLocation.address}</strong></span>
             </span>
-            <span className="text-emerald-300 font-bold">15-Min Rush Cold-Chain</span>
+            <span className="text-emerald-300 font-bold whitespace-nowrap">15-Min Rush Cold-Chain</span>
           </div>
         </div>
 
         {/* Stepper Progress */}
-        <div className="p-6 bg-slate-50/60 backdrop-blur-md border-b border-white/80">
+        <div className="p-3.5 sm:p-6 bg-slate-50/60 backdrop-blur-md border-b border-white/80">
           <div className="flex items-center justify-between max-w-lg mx-auto relative">
             
             {/* Step 1 */}
-            <div className="flex flex-col items-center z-10">
-              <div className="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-extrabold shadow-md border border-white/40">
-                <Check className="w-4 h-4 stroke-[2.5]" />
+            <div className="flex flex-col items-center z-10 text-center">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-extrabold shadow-md border border-white/40">
+                <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
               </div>
-              <span className="text-[11px] font-bold text-slate-800 mt-1.5">Order Placed</span>
-              <span className="text-[10px] text-slate-400">10:04 AM</span>
+              <span className="text-[10px] sm:text-[11px] font-bold text-slate-800 mt-1.5">Order Placed</span>
+              <span className="text-[9px] sm:text-[10px] text-slate-400">10:04 AM</span>
             </div>
 
-            <div className="flex-1 h-1 bg-emerald-500 -mt-6 mx-2"></div>
+            <div className="flex-1 h-1 bg-emerald-500 -mt-6 mx-1 sm:mx-2"></div>
 
             {/* Step 2 */}
-            <div className="flex flex-col items-center z-10">
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-extrabold shadow-md border border-white/40 ${
+            <div className="flex flex-col items-center z-10 text-center">
+              <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs font-extrabold shadow-md border border-white/40 ${
                 step >= 2 ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-500'
               }`}>
-                {step > 2 ? <Check className="w-4 h-4 stroke-[2.5]" /> : <PackageCheck className="w-4 h-4" />}
+                {step > 2 ? <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" /> : <PackageCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4" />}
               </div>
-              <span className="text-[11px] font-bold text-slate-800 mt-1.5">Packed Fresh</span>
-              <span className="text-[10px] text-slate-400">10:08 AM</span>
+              <span className="text-[10px] sm:text-[11px] font-bold text-slate-800 mt-1.5">Packed Fresh</span>
+              <span className="text-[9px] sm:text-[10px] text-slate-400">10:08 AM</span>
             </div>
 
-            <div className={`flex-1 h-1 -mt-6 mx-2 ${step >= 3 ? 'bg-emerald-500' : 'bg-slate-200'}`}></div>
+            <div className={`flex-1 h-1 -mt-6 mx-1 sm:mx-2 ${step >= 3 ? 'bg-emerald-500' : 'bg-slate-200'}`}></div>
 
             {/* Step 3 */}
-            <div className="flex flex-col items-center z-10">
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-extrabold shadow-md border border-white/40 ${
+            <div className="flex flex-col items-center z-10 text-center">
+              <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs font-extrabold shadow-md border border-white/40 ${
                 step >= 3 ? 'bg-blue-600 text-white animate-pulse' : 'bg-slate-100 text-slate-400 border-slate-300'
               }`}>
-                <Truck className="w-4 h-4" />
+                <Truck className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </div>
-              <span className={`text-[11px] font-bold mt-1.5 ${step >= 3 ? 'text-blue-700' : 'text-slate-400'}`}>On The Way</span>
-              <span className="text-[10px] text-blue-600 font-semibold">{etaMinutes}m away</span>
+              <span className={`text-[10px] sm:text-[11px] font-bold mt-1.5 ${step >= 3 ? 'text-blue-700' : 'text-slate-400'}`}>On The Way</span>
+              <span className="text-[9px] sm:text-[10px] text-blue-600 font-semibold">{etaMinutes}m away</span>
             </div>
 
-            <div className={`flex-1 h-1 -mt-6 mx-2 ${step >= 4 ? 'bg-emerald-500' : 'bg-slate-200'}`}></div>
+            <div className={`flex-1 h-1 -mt-6 mx-1 sm:mx-2 ${step >= 4 ? 'bg-emerald-500' : 'bg-slate-200'}`}></div>
 
             {/* Step 4 */}
-            <div className="flex flex-col items-center z-10">
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-extrabold shadow-md border border-white/40 ${
+            <div className="flex flex-col items-center z-10 text-center">
+              <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs font-extrabold shadow-md border border-white/40 ${
                 step >= 4 ? 'bg-emerald-600 text-white' : 'bg-slate-100 text-slate-400 border-slate-300'
               }`}>
-                <Home className="w-4 h-4" />
+                <Home className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </div>
-              <span className="text-[11px] font-bold text-slate-400 mt-1.5">Delivered</span>
-              <span className="text-[10px] text-slate-400">~10:25 AM</span>
+              <span className="text-[10px] sm:text-[11px] font-bold text-slate-400 mt-1.5">Delivered</span>
+              <span className="text-[9px] sm:text-[10px] text-slate-400">~10:25 AM</span>
             </div>
 
           </div>
         </div>
 
         {/* Courier & Shopper Card */}
-        <div className="p-6 divide-y divide-slate-100">
+        <div className="p-4 sm:p-6 divide-y divide-slate-100">
           
-          <div className="pb-4 flex items-center justify-between">
-            <div className="flex items-center gap-3">
+          <div className="pb-4 flex flex-wrap items-center justify-between gap-3">
+            <div className="flex items-center gap-3 min-w-0">
               <img
                 src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80"
                 alt="Rider"
-                className="w-13 h-13 rounded-2xl object-cover ring-2 ring-emerald-500 shadow-sm"
+                className="w-12 h-12 sm:w-13 sm:h-13 rounded-2xl object-cover ring-2 ring-emerald-500 shadow-sm flex-shrink-0"
               />
-              <div>
-                <div className="flex items-center gap-2">
+              <div className="min-w-0">
+                <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
                   <h4 className="text-sm font-extrabold text-slate-900 font-heading">Marco R.</h4>
                   <span className="text-xs font-bold text-amber-500 flex items-center gap-0.5">
                     <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
@@ -369,7 +369,7 @@ export default function OrderTrackingPage() {
             </div>
 
             {/* Contact Buttons */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 flex-shrink-0">
               <button
                 onClick={handleCall}
                 className="w-10 h-10 rounded-2xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 flex items-center justify-center transition-colors shadow-sm active:scale-95"
@@ -388,12 +388,12 @@ export default function OrderTrackingPage() {
           </div>
 
           {/* Shopper Details */}
-          <div className="pt-4 flex items-center justify-between text-xs text-slate-600">
+          <div className="pt-4 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-600">
             <div className="flex items-center gap-2">
-              <ShoppingBag className="w-4 h-4 text-blue-600" />
+              <ShoppingBag className="w-4 h-4 text-blue-600 flex-shrink-0" />
               <span>Personal Shopper: <strong>Sarah K.</strong> handpicked your fresh items</span>
             </div>
-            <span className="text-emerald-700 font-bold flex items-center gap-1 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+            <span className="text-emerald-700 font-bold flex items-center gap-1 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200 flex-shrink-0">
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
               100% Quality Inspected
             </span>
@@ -404,7 +404,7 @@ export default function OrderTrackingPage() {
       </div>
 
       {/* Itemized Order Invoice & Receipt (Exclusively Formatted for PDF / Print & Web) */}
-      <div className="printable-order-invoice liquid-glass-card rounded-3xl shadow-lg p-6 sm:p-8 space-y-6 print:bg-white print:backdrop-blur-none print:border-none print:shadow-none print:p-0">
+      <div className="printable-order-invoice liquid-glass-card rounded-2xl sm:rounded-3xl shadow-lg p-4 sm:p-8 space-y-6 print:bg-white print:backdrop-blur-none print:border-none print:shadow-none print:p-0">
         
         {/* Official Tax Invoice Letterhead - Visible ONLY in Print/PDF */}
         <div className="hidden print:block pb-6 mb-6 border-b-2 border-slate-900">
@@ -484,10 +484,10 @@ export default function OrderTrackingPage() {
             </p>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={handleDownloadPDF}
-              className="btn btn-primary text-xs py-2 px-4 rounded-full font-bold flex items-center gap-1.5 shadow-sm active:scale-95"
+              className="btn btn-primary text-xs py-2 px-3.5 sm:px-4 rounded-full font-bold flex items-center gap-1.5 shadow-sm active:scale-95"
               title="Download clean order details PDF"
             >
               <Download className="w-3.5 h-3.5" />
@@ -604,8 +604,8 @@ export default function OrderTrackingPage() {
             onClick={() => setIsChatOpen(false)}
           />
 
-          <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
-            <div className="w-screen max-w-sm bg-white shadow-2xl flex flex-col justify-between animate-fade-in">
+          <div className="fixed inset-y-0 right-0 max-w-full flex pl-4 sm:pl-10">
+            <div className="w-screen max-w-sm bg-white shadow-2xl flex flex-col justify-between animate-fade-in pt-[env(safe-area-inset-top,0px)] pb-[env(safe-area-inset-bottom,0px)]">
               {/* Chat Header */}
               <div className="p-4 border-b border-slate-100 flex items-center justify-between bg-slate-50">
                 <div className="flex items-center gap-2.5">
@@ -684,12 +684,12 @@ export default function OrderTrackingPage() {
                   value={chatInput}
                   onChange={(e) => setChatInput(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleSendChatMessage()}
-                  className="flex-1 bg-white border border-slate-200 text-xs px-3 py-2 rounded-xl focus:outline-none focus:border-blue-500 shadow-inner"
+                  className="flex-1 min-w-0 bg-white border border-slate-200 text-xs px-3 py-2 rounded-xl focus:outline-none focus:border-blue-500 shadow-inner"
                 />
                 <button
                   type="button"
                   onClick={() => handleSendChatMessage()}
-                  className="w-9 h-9 rounded-xl bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center transition-colors shadow-sm active:scale-95"
+                  className="w-9 h-9 flex-shrink-0 rounded-xl bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center transition-colors shadow-sm active:scale-95"
                 >
                   <Send className="w-4 h-4" />
                 </button>

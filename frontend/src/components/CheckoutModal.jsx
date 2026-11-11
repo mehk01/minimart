@@ -124,7 +124,7 @@ export default function CheckoutModal() {
   return (
     <div className="modal-overlay" onClick={handleClose}>
       <div
-        className="liquid-glass-modal w-full max-w-xl rounded-3xl overflow-hidden p-6 sm:p-8 animate-fade-in relative max-h-[90vh] overflow-y-auto"
+        className="liquid-glass-modal w-full max-w-xl rounded-3xl overflow-x-hidden overflow-y-auto p-4 sm:p-8 animate-fade-in relative max-h-[90vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -231,15 +231,15 @@ export default function CheckoutModal() {
 
             {/* If user is guest, show 1-click login hint */}
             {!isAuthenticated && (
-              <div className="mb-5 p-3.5 bg-blue-50/80 border border-blue-200 rounded-2xl flex items-center justify-between">
-                <div>
+              <div className="mb-5 p-3 sm:p-3.5 bg-blue-50/80 border border-blue-200 rounded-2xl flex flex-wrap sm:flex-nowrap items-center justify-between gap-2.5">
+                <div className="min-w-0 flex-1">
                   <p className="text-xs font-bold text-blue-950">Quick 1-Click Checkout</p>
                   <p className="text-[11px] text-blue-700">Login instantly as our test customer</p>
                 </div>
                 <button
                   type="button"
                   onClick={() => quickDemoLogin('customer')}
-                  className="btn btn-primary text-xs py-1.5 px-3.5 rounded-full flex items-center gap-1 shadow-sm"
+                  className="btn btn-primary text-xs py-1.5 px-3.5 rounded-full flex items-center gap-1 shadow-sm flex-shrink-0 whitespace-nowrap"
                 >
                   <Zap className="w-3.5 h-3.5 fill-white text-white" />
                   <span>Auto-Login</span>
@@ -269,7 +269,7 @@ export default function CheckoutModal() {
                   <Clock className="w-3.5 h-3.5 text-amber-500" />
                   Delivery Speed
                 </label>
-                <div className="grid grid-cols-2 gap-3 relative">
+                <div className="grid grid-cols-2 gap-2.5 sm:gap-3 relative">
                   {[
                     { id: 'express', label: 'Express Rush', time: '15 - 20 mins', icon: Zap, iconBg: 'bg-blue-100 text-blue-600', fill: true },
                     { id: 'standard', label: 'Standard', time: '35 - 45 mins', icon: Truck, iconBg: 'bg-slate-100 text-slate-600', fill: false },
@@ -281,7 +281,7 @@ export default function CheckoutModal() {
                         key={speed.id}
                         type="button"
                         onClick={() => setDeliverySpeed(speed.id)}
-                        className={`relative p-3 rounded-2xl border text-left flex items-start gap-2.5 transition-colors duration-250 ease-out z-10 cursor-pointer ${
+                        className={`relative p-2.5 sm:p-3 rounded-2xl border text-left flex items-start gap-2 sm:gap-2.5 min-w-0 transition-colors duration-250 ease-out z-10 cursor-pointer ${
                           isSelected
                             ? 'border-blue-600'
                             : 'border-white/80 liquid-glass hover:bg-white'
@@ -297,9 +297,9 @@ export default function CheckoutModal() {
                         <div className={`w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 ${speed.iconBg}`}>
                           <Icon className={`w-4 h-4 ${speed.fill ? 'fill-blue-600 text-blue-600' : ''}`} />
                         </div>
-                        <div>
-                          <p className={`text-xs font-bold transition-colors ${isSelected ? 'text-blue-950 font-extrabold' : 'text-slate-900'}`}>{speed.label}</p>
-                          <p className="text-[11px] text-slate-500">{speed.time}</p>
+                        <div className="min-w-0">
+                          <p className={`text-xs font-bold transition-colors leading-tight ${isSelected ? 'text-blue-950 font-extrabold' : 'text-slate-900'}`}>{speed.label}</p>
+                          <p className="text-[11px] text-slate-500 mt-0.5">{speed.time}</p>
                         </div>
                       </button>
                     );
@@ -314,55 +314,55 @@ export default function CheckoutModal() {
                   Payment Method
                 </label>
                 <div className="space-y-2">
-                  <label className="flex items-center gap-3 p-3 liquid-glass hover:bg-white rounded-xl border border-white/80 cursor-pointer transition-colors shadow-sm">
+                  <label className="flex flex-wrap sm:flex-nowrap items-center gap-2 sm:gap-3 p-3 liquid-glass hover:bg-white rounded-xl border border-white/80 cursor-pointer transition-colors shadow-sm">
                     <input
                       type="radio"
                       name="payment"
                       checked={paymentMethod === 'cash_on_delivery'}
                       onChange={() => setPaymentMethod('cash_on_delivery')}
-                      className="accent-blue-600"
+                      className="accent-blue-600 flex-shrink-0"
                     />
-                    <div className="flex items-center gap-2">
-                      <div className="w-6 h-6 rounded-md bg-emerald-100 flex items-center justify-center text-emerald-700">
+                    <div className="flex items-center gap-2 min-w-0">
+                      <div className="w-6 h-6 rounded-md bg-emerald-100 flex items-center justify-center text-emerald-700 flex-shrink-0">
                         <Banknote className="w-3.5 h-3.5" />
                       </div>
                       <span className="text-xs font-bold text-slate-800">Cash on Delivery</span>
                     </div>
-                    <span className="text-[11px] text-slate-400 ml-auto">Pay upon arrival</span>
+                    <span className="text-[11px] text-slate-400 ml-auto flex-shrink-0">Pay upon arrival</span>
                   </label>
 
-                  <label className="flex items-center gap-3 p-3 liquid-glass hover:bg-white rounded-xl border border-white/80 cursor-pointer transition-colors shadow-sm">
+                  <label className="flex flex-wrap sm:flex-nowrap items-center gap-2 sm:gap-3 p-3 liquid-glass hover:bg-white rounded-xl border border-white/80 cursor-pointer transition-colors shadow-sm">
                     <input
                       type="radio"
                       name="payment"
                       checked={paymentMethod === 'card'}
                       onChange={() => setPaymentMethod('card')}
-                      className="accent-blue-600"
+                      className="accent-blue-600 flex-shrink-0"
                     />
-                    <div className="flex items-center gap-2">
-                      <div className="w-6 h-6 rounded-md bg-blue-100 flex items-center justify-center text-blue-700">
+                    <div className="flex items-center gap-2 min-w-0">
+                      <div className="w-6 h-6 rounded-md bg-blue-100 flex items-center justify-center text-blue-700 flex-shrink-0">
                         <CreditCard className="w-3.5 h-3.5" />
                       </div>
                       <span className="text-xs font-bold text-slate-800">Credit / Debit Card</span>
                     </div>
-                    <span className="text-[11px] text-slate-400 ml-auto">Visa •••• 4242</span>
+                    <span className="text-[11px] text-slate-400 ml-auto flex-shrink-0">Visa •••• 4242</span>
                   </label>
 
-                  <label className="flex items-center gap-3 p-3 bg-slate-50 hover:bg-slate-100/80 rounded-xl border border-slate-200 cursor-pointer transition-colors">
+                  <label className="flex flex-wrap sm:flex-nowrap items-center gap-2 sm:gap-3 p-3 bg-slate-50 hover:bg-slate-100/80 rounded-xl border border-slate-200 cursor-pointer transition-colors">
                     <input
                       type="radio"
                       name="payment"
                       checked={paymentMethod === 'minimart_pay'}
                       onChange={() => setPaymentMethod('minimart_pay')}
-                      className="accent-blue-600"
+                      className="accent-blue-600 flex-shrink-0"
                     />
-                    <div className="flex items-center gap-2">
-                      <div className="w-6 h-6 rounded-md bg-amber-100 flex items-center justify-center text-amber-700">
+                    <div className="flex items-center gap-2 min-w-0">
+                      <div className="w-6 h-6 rounded-md bg-amber-100 flex items-center justify-center text-amber-700 flex-shrink-0">
                         <Zap className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
                       </div>
                       <span className="text-xs font-bold text-slate-800">MiniMart 1-Tap Pay / Apple Pay</span>
                     </div>
-                    <span className="text-[11px] text-emerald-600 font-semibold ml-auto">Instant Checkout</span>
+                    <span className="text-[11px] text-emerald-600 font-semibold ml-auto flex-shrink-0">Instant Checkout</span>
                   </label>
                 </div>
               </div>
@@ -392,12 +392,12 @@ export default function CheckoutModal() {
                     value={couponInput}
                     onChange={(e) => setCouponInput(e.target.value)}
                     placeholder="e.g. SAVE20 or FREEDELIVERY"
-                    className="flex-1 text-xs px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:border-blue-500 uppercase font-mono shadow-inner"
+                    className="flex-1 min-w-0 text-xs px-3 sm:px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:border-blue-500 uppercase font-mono shadow-inner"
                   />
                   <button
                     type="button"
                     onClick={handleApplyCoupon}
-                    className="btn btn-secondary text-xs px-4 py-2 rounded-xl font-bold"
+                    className="btn btn-secondary text-xs px-3.5 sm:px-4 py-2 rounded-xl font-bold flex-shrink-0"
                   >
                     Apply
                   </button>

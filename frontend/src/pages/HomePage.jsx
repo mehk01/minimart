@@ -148,57 +148,57 @@ export default function HomePage() {
   });
 
   return (
-    <div className="space-y-8 sm:space-y-12 pb-16">
+    <div className="space-y-6 sm:space-y-12 pb-4 md:pb-16">
       
       {/* ── 1. Hero Promo Banner ─────────────────────────────── */}
-      <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-800 text-white shadow-xl">
+      <section className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-800 text-white shadow-xl">
         <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]"></div>
         
         {/* Glow circles */}
         <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-blue-400/20 blur-3xl pointer-events-none"></div>
         <div className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-indigo-500/20 blur-3xl pointer-events-none"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-10 sm:py-16 sm:px-10 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="max-w-xl text-center md:text-left space-y-4">
-            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-semibold text-blue-100 ring-1 ring-white/20 shadow-sm">
-              <Zap className="w-3.5 h-3.5 text-amber-300 fill-amber-300" />
-              <span>15-Minute Guaranteed Delivery</span>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 py-5 min-[375px]:px-5 min-[375px]:py-6 sm:py-16 sm:px-10 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 md:gap-8">
+          <div className="w-full max-w-xl text-center md:text-left space-y-2.5 sm:space-y-4">
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-white/15 backdrop-blur-md px-2.5 sm:px-3.5 py-1 rounded-full text-[11px] sm:text-xs font-semibold text-blue-100 ring-1 ring-white/20 shadow-sm max-w-full">
+              <Zap className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-amber-300 fill-amber-300 flex-shrink-0" />
+              <span className="truncate">15-Minute Guaranteed Delivery</span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight font-heading">
+            <h1 className="hero-heading font-extrabold tracking-tight text-white font-heading">
               Farm-Fresh Groceries, <br className="hidden sm:inline" />
               Delivered in <span className="text-amber-300 underline decoration-amber-300/40">Minutes</span>.
             </h1>
 
-            <p className="text-sm sm:text-base text-blue-100/90 leading-relaxed font-normal">
+            <p className="hero-subtext text-blue-100/90 leading-snug sm:leading-relaxed font-normal max-w-md mx-auto md:mx-0">
               Crisp seasonal produce, warm artisan breads, farm dairy, and premium cuts handpicked with care and chilled to perfection.
             </p>
 
-            <div className="pt-2 flex flex-wrap items-center justify-center md:justify-start gap-3">
+            <div className="pt-1 sm:pt-2 flex flex-wrap items-center justify-center md:justify-start gap-2 sm:gap-3">
               <a
                 href="#catalog"
-                className="btn bg-white hover:bg-slate-50 text-blue-800 font-extrabold py-3 px-6 rounded-full shadow-lg hover:shadow-xl transition-all active:scale-95 flex items-center gap-2"
+                className="btn bg-white hover:bg-slate-50 text-blue-800 font-extrabold text-xs sm:text-sm py-2.5 px-4 sm:py-3 sm:px-6 rounded-full shadow-lg hover:shadow-xl transition-all active:scale-95 flex items-center gap-1.5 sm:gap-2 whitespace-nowrap"
               >
                 <span>Shop Now</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </a>
               <Link
                 to="/deals"
-                className="btn bg-blue-800/60 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-full backdrop-blur-md ring-1 ring-white/25 transition-all shadow-md active:scale-95 flex items-center gap-2"
+                className="btn bg-blue-800/60 hover:bg-blue-800 text-white font-bold text-xs sm:text-sm py-2.5 px-4 sm:py-3 sm:px-6 rounded-full backdrop-blur-md ring-1 ring-white/25 transition-all shadow-md active:scale-95 flex items-center gap-1.5 sm:gap-2 whitespace-nowrap"
               >
-                <Flame className="w-4 h-4 text-amber-400 fill-amber-400" />
+                <Flame className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 fill-amber-400" />
                 <span>View Flash Deals</span>
               </Link>
             </div>
 
             {/* Micro stats */}
-            <div className="pt-4 flex items-center justify-center md:justify-start gap-6 text-xs text-blue-100/80 font-medium border-t border-white/10">
+            <div className="pt-2.5 sm:pt-4 flex flex-wrap items-center justify-center md:justify-start gap-x-4 sm:gap-x-6 gap-y-1.5 text-[11px] sm:text-xs text-blue-100/80 font-medium border-t border-white/10">
               <div className="flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-amber-300" />
+                <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-300 flex-shrink-0" />
                 <span>100% Quality Checked</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <Leaf className="w-4 h-4 text-emerald-300" />
+                <Leaf className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-300 flex-shrink-0" />
                 <span>Zero Plastic Options</span>
               </div>
             </div>
@@ -206,34 +206,34 @@ export default function HomePage() {
 
           {/* Hero Graphics / Showcase Card */}
           <div className="relative w-full max-w-sm flex-shrink-0">
-            <div className="liquid-glass-dark rounded-3xl p-5 shadow-2xl relative">
-              <div className="flex items-center gap-3 mb-4">
+            <div className="liquid-glass-dark rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 shadow-2xl relative">
+              <div className="flex items-center gap-3 mb-2.5 sm:mb-4">
                 <img
                   src="https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?auto=format&fit=crop&w=150&q=80"
                   alt="Avocado"
-                  className="w-14 h-14 rounded-2xl object-cover ring-2 ring-white/40 shadow-md flex-shrink-0"
+                  className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl object-cover ring-2 ring-white/40 shadow-md flex-shrink-0"
                 />
-                <div>
-                  <span className="text-[10px] font-extrabold text-amber-300 uppercase tracking-wider inline-flex items-center gap-1 bg-amber-400/20 px-2.5 py-0.5 rounded-full border border-amber-300/40">
+                <div className="min-w-0 flex-1">
+                  <span className="text-[10px] font-extrabold text-amber-300 uppercase tracking-wider inline-flex items-center gap-1 bg-amber-400/20 px-2 sm:px-2.5 py-0.5 rounded-full border border-amber-300/40">
                     <Sparkles className="w-3 h-3 text-amber-300 fill-amber-300" />
                     Top Pick Today
                   </span>
-                  <p className="text-base font-extrabold text-white mt-1 font-heading tracking-tight">Organic Hass Avocados</p>
-                  <p className="text-xs text-white font-extrabold mt-0.5 flex items-center gap-2">
-                    <span className="text-base font-black text-amber-300 font-heading">{formatINR(299)}</span>
+                  <p className="text-sm sm:text-base font-extrabold text-white mt-0.5 sm:mt-1 font-heading tracking-tight truncate">Organic Hass Avocados</p>
+                  <p className="text-xs text-white font-extrabold mt-0.5 flex flex-wrap items-center gap-1.5 sm:gap-2">
+                    <span className="text-sm sm:text-base font-black text-amber-300 font-heading">{formatINR(299)}</span>
                     <span className="text-[11px] text-blue-200 line-through">{formatINR(399)}</span>
                     <span className="text-[10px] font-bold text-emerald-300 bg-emerald-500/20 px-1.5 py-0.5 rounded-full border border-emerald-400/30">Save 25%</span>
                   </p>
                 </div>
               </div>
 
-              <div className="bg-slate-950/40 backdrop-blur-md rounded-2xl p-3 flex items-center justify-between text-xs text-white border border-white/15 shadow-inner">
-                <div className="flex items-center gap-2 text-blue-100 font-semibold">
-                  <Clock className="w-4 h-4 text-emerald-400" />
-                  <span>Estimated Arrival:</span>
+              <div className="bg-slate-950/40 backdrop-blur-md rounded-xl sm:rounded-2xl p-2.5 sm:p-3 flex items-center justify-between gap-2 text-[11px] sm:text-xs text-white border border-white/15 shadow-inner">
+                <div className="flex items-center gap-1.5 sm:gap-2 text-blue-100 font-semibold min-w-0">
+                  <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400 flex-shrink-0" />
+                  <span className="truncate">Estimated Arrival:</span>
                 </div>
-                <strong className="text-amber-300 font-extrabold flex items-center gap-1 bg-amber-400/20 px-2.5 py-1 rounded-full border border-amber-300/30 shadow-sm">
-                  <Zap className="w-3.5 h-3.5 fill-amber-300 text-amber-300" />
+                <strong className="text-amber-300 font-extrabold flex items-center gap-1 bg-amber-400/20 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border border-amber-300/30 shadow-sm flex-shrink-0 whitespace-nowrap">
+                  <Zap className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-amber-300 text-amber-300" />
                   12 mins
                 </strong>
               </div>
@@ -255,11 +255,11 @@ export default function HomePage() {
           </Link>
         </div>
 
-        <div className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-none pt-1">
+        <div className="flex items-center gap-2.5 sm:gap-3 overflow-x-auto pb-2 scrollbar-none pt-1 max-w-full">
           {/* All button */}
           <button
             onClick={() => setActiveCategory('all')}
-            className={`relative flex flex-col items-center gap-2 min-w-[76px] sm:min-w-[84px] p-2.5 rounded-2xl transition-colors duration-250 ease-out active:scale-95 z-10 ${
+            className={`relative flex flex-col items-center gap-1.5 sm:gap-2 min-w-[72px] sm:min-w-[84px] p-2 sm:p-2.5 rounded-2xl transition-colors duration-250 ease-out active:scale-95 z-10 flex-shrink-0 ${
               activeCategory === 'all'
                 ? 'text-white'
                 : 'liquid-glass hover:bg-white text-slate-700 shadow-sm'
@@ -272,7 +272,7 @@ export default function HomePage() {
                 transition={{ type: 'spring', stiffness: 450, damping: 32 }}
               />
             )}
-            <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors duration-250 ease-out ${
+            <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center transition-colors duration-250 ease-out ${
               activeCategory === 'all' ? 'bg-white/20 text-white' : 'bg-slate-100/80 text-slate-700'
             }`}>
               <LayoutGrid className="w-5 h-5" />
@@ -286,7 +286,7 @@ export default function HomePage() {
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.slug)}
-                className={`relative flex flex-col items-center gap-2 min-w-[76px] sm:min-w-[84px] p-2.5 rounded-2xl transition-colors duration-250 ease-out active:scale-95 z-10 ${
+                className={`relative flex flex-col items-center gap-1.5 sm:gap-2 min-w-[72px] sm:min-w-[84px] p-2 sm:p-2.5 rounded-2xl transition-colors duration-250 ease-out active:scale-95 z-10 flex-shrink-0 ${
                   isSelected
                     ? 'text-white'
                     : 'liquid-glass hover:bg-white text-slate-700 shadow-sm'
@@ -299,7 +299,7 @@ export default function HomePage() {
                     transition={{ type: 'spring', stiffness: 450, damping: 32 }}
                   />
                 )}
-                <div className={`w-12 h-12 rounded-xl overflow-hidden flex items-center justify-center transition-all duration-250 ease-out ${
+                <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl overflow-hidden flex items-center justify-center transition-all duration-250 ease-out ${
                   isSelected ? 'ring-2 ring-white/60 shadow-sm' : ''
                 }`}>
                   <img
@@ -319,14 +319,14 @@ export default function HomePage() {
 
       {/* ── 3. Flash Deals Section ───────────────────────────── */}
       {deals.length > 0 && activeCategory === 'all' && !searchQuery && (
-        <section className="liquid-glass-card bg-gradient-to-r from-amber-500/12 via-orange-500/10 to-amber-500/5 rounded-3xl p-5 sm:p-7 border border-amber-200/70 space-y-4 shadow-xl">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-amber-500 text-white flex items-center justify-center shadow-md shadow-amber-500/30 border border-white/30">
-                <Flame className="w-5 h-5" />
+        <section className="liquid-glass-card bg-gradient-to-r from-amber-500/12 via-orange-500/10 to-amber-500/5 rounded-2xl sm:rounded-3xl p-3 sm:p-7 border border-amber-200/70 space-y-3 sm:space-y-4 shadow-xl">
+          <div className="flex flex-wrap items-center justify-between gap-2.5 sm:gap-3">
+            <div className="flex items-center gap-2.5 min-w-0">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-amber-500 text-white flex items-center justify-center shadow-md shadow-amber-500/30 border border-white/30 flex-shrink-0">
+                <Flame className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
-              <div>
-                <h2 className="text-xl font-extrabold text-slate-900 flex items-center gap-2 font-heading">
+              <div className="min-w-0">
+                <h2 className="text-lg sm:text-xl font-extrabold text-slate-900 flex flex-wrap items-center gap-1.5 sm:gap-2 font-heading">
                   Today's Super Deals
                   <span className="badge badge-sale text-[10px] font-extrabold shadow-sm">Up to 30% Off</span>
                 </h2>
@@ -336,14 +336,14 @@ export default function HomePage() {
 
             <Link
               to="/deals"
-              className="btn liquid-glass text-xs py-2 px-4 rounded-full font-bold text-amber-800 hover:text-amber-950 shadow-sm border border-amber-200/80 hover:border-amber-300 flex items-center gap-1.5"
+              className="btn liquid-glass text-xs py-1.5 sm:py-2 px-3.5 sm:px-4 rounded-full font-bold text-amber-800 hover:text-amber-950 shadow-sm border border-amber-200/80 hover:border-amber-300 flex items-center gap-1.5 flex-shrink-0"
             >
               <span>See All Deals</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+          <div className="product-grid">
             {deals.slice(0, 4).map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
@@ -352,10 +352,10 @@ export default function HomePage() {
       )}
 
       {/* ── 4. Main Products Catalog ─────────────────────────── */}
-      <section id="catalog" className="space-y-5 pt-2">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-200/60">
+      <section id="catalog" className="space-y-4 sm:space-y-5 pt-1 sm:pt-2">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 pb-2 border-b border-slate-200/60">
           <div>
-            <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 font-heading">
+            <h2 className="text-lg sm:text-2xl font-extrabold text-slate-900 font-heading">
               {searchQuery ? `Search results for "${searchQuery}"` : activeCategory === 'all' ? 'All Fresh Groceries' : categories.find(c => c.slug === activeCategory)?.name || 'Groceries'}
             </h2>
             <p className="text-xs text-slate-500">
@@ -364,7 +364,7 @@ export default function HomePage() {
           </div>
 
           {/* Sort By Dropdown */}
-          <div className="flex items-center gap-2 self-end sm:self-auto">
+          <div className="flex items-center gap-2 self-start sm:self-auto">
             <span className="text-xs font-semibold text-slate-500">Sort by:</span>
             <select
               value={sortBy}
@@ -381,8 +381,8 @@ export default function HomePage() {
         </div>
 
         {/* Realistic Tactile Capsule Filter Bar with Fluid Sliding Spring Transition */}
-        <div className="flex items-center overflow-x-auto pb-1 scrollbar-none pt-1">
-          <div className="liquid-bar flex items-center gap-1.5 p-1 relative">
+        <div className="flex items-center overflow-x-auto pb-1 scrollbar-none pt-1 max-w-full">
+          <div className="liquid-bar flex items-center gap-1 sm:gap-1.5 p-1 relative">
             {[
               { id: 'all', label: 'All Items', icon: LayoutGrid, activeColor: 'text-white', idleColor: 'text-blue-600' },
               { id: 'organic', label: '100% Organic', icon: Leaf, activeColor: 'text-white', idleColor: 'text-emerald-600' },
@@ -397,7 +397,7 @@ export default function HomePage() {
                 <button
                   key={filter.id}
                   onClick={() => setSmartFilter(filter.id)}
-                  className={`relative px-4 py-2 rounded-full text-xs font-bold transition-colors duration-250 ease-out flex items-center gap-1.5 z-10 select-none cursor-pointer ${
+                  className={`relative px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-bold transition-colors duration-250 ease-out flex items-center gap-1.5 z-10 select-none cursor-pointer whitespace-nowrap flex-shrink-0 ${
                     isSelected ? 'text-white' : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
@@ -418,7 +418,7 @@ export default function HomePage() {
 
         {/* Product Cards Grid */}
         {loading ? (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-5">
+          <div className="product-grid">
             {[...Array(8)].map((_, i) => (
               <div key={i} className="bg-white border border-slate-200 rounded-2xl h-72 animate-pulse p-4 space-y-3">
                 <div className="bg-slate-200 h-36 rounded-xl"></div>
@@ -429,7 +429,7 @@ export default function HomePage() {
             ))}
           </div>
         ) : filteredProducts.length === 0 ? (
-          <div className="text-center py-16 bg-white rounded-3xl border border-slate-200/80 p-8 shadow-sm">
+          <div className="text-center py-12 sm:py-16 bg-white rounded-2xl sm:rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-sm">
             <div className="w-16 h-16 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-400 mx-auto mb-3 shadow-inner">
               <SearchX className="w-8 h-8 text-slate-400" />
             </div>
@@ -449,7 +449,7 @@ export default function HomePage() {
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-5">
+          <div className="product-grid">
             {filteredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
@@ -458,11 +458,11 @@ export default function HomePage() {
 
         {/* Load More Groceries Button */}
         {!loading && filteredProducts.length > 0 && page < totalPages && (
-          <div className="flex flex-col items-center justify-center pt-6 space-y-2">
+          <div className="flex flex-col items-center justify-center pt-4 sm:pt-6 space-y-2">
             <button
               onClick={handleLoadMore}
               disabled={isLoadingMore}
-              className="btn btn-secondary px-8 py-3 rounded-full font-extrabold text-blue-700 bg-white border border-blue-200 hover:border-blue-400 shadow-sm transition-all flex items-center gap-2 group disabled:opacity-60 active:scale-95"
+              className="btn btn-secondary px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-extrabold text-blue-700 bg-white border border-blue-200 hover:border-blue-400 shadow-sm transition-all flex items-center gap-2 group disabled:opacity-60 active:scale-95"
             >
               {isLoadingMore ? (
                 <>
@@ -484,13 +484,13 @@ export default function HomePage() {
       </section>
 
       {/* ── 5. Value Props Banner ────────────────────────────── */}
-      <section className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/80 shadow-sm">
-        <div className="text-center max-w-xl mx-auto mb-8">
+      <section className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-10 border border-slate-200/80 shadow-sm">
+        <div className="text-center max-w-xl mx-auto mb-5 sm:mb-8">
           <span className="text-[11px] font-extrabold text-blue-600 uppercase tracking-wider">The MiniMart Standard</span>
-          <h2 className="text-2xl font-extrabold text-slate-900 mt-1 font-heading">Why Springfield Loves MiniMart</h2>
+          <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 mt-1 font-heading">Why Springfield Loves MiniMart</h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-6 text-center">
           <div className="p-5 rounded-2xl bg-slate-50 border border-slate-100 space-y-2.5">
             <div className="w-12 h-12 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center mx-auto mb-2 shadow-sm border border-blue-200">
               <Truck className="w-6 h-6" />

@@ -175,48 +175,48 @@ export default function LocationModal() {
   return (
     <div className="modal-overlay" onClick={() => setIsLocationModalOpen(false)}>
       <div
-        className="liquid-glass-modal w-full max-w-lg rounded-3xl shadow-2xl p-6 sm:p-7 animate-fade-in relative max-h-[90vh] overflow-y-auto"
+        className="liquid-glass-modal w-full max-w-lg rounded-3xl shadow-2xl p-4 sm:p-7 animate-fade-in relative max-h-[90vh] overflow-y-auto overflow-x-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={() => setIsLocationModalOpen(false)}
-          className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full liquid-glass hover:bg-white text-slate-500 hover:text-slate-800 flex items-center justify-center transition-all shadow-sm active:scale-95"
+          className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 z-10 w-8 h-8 sm:w-9 sm:h-9 rounded-full liquid-glass hover:bg-white text-slate-500 hover:text-slate-800 flex items-center justify-center transition-all shadow-sm active:scale-95"
           aria-label="Close dialog"
         >
           <X className="w-4 h-4" />
         </button>
 
         {/* Title */}
-        <div className="flex items-center gap-2.5 mb-2">
-          <div className="w-9 h-9 rounded-2xl bg-blue-50/80 text-blue-600 flex items-center justify-center border border-blue-200/80">
+        <div className="flex items-center gap-2.5 mb-2 pr-10">
+          <div className="w-9 h-9 rounded-2xl bg-blue-50/80 text-blue-600 flex items-center justify-center border border-blue-200/80 flex-shrink-0">
             <Navigation className="w-5 h-5" />
           </div>
-          <div>
-            <h2 className="text-xl font-extrabold text-slate-900 font-heading">Choose Delivery Destination</h2>
+          <div className="min-w-0">
+            <h2 className="text-lg sm:text-xl font-extrabold text-slate-900 font-heading leading-tight">Choose Delivery Destination</h2>
             <p className="text-xs text-slate-500">Pick a saved address or enter a new destination</p>
           </div>
         </div>
 
         {/* Preset Cards */}
-        <div className="space-y-2.5 my-5">
+        <div className="space-y-2.5 my-4 sm:my-5">
           {allPresets.map((p, idx) => (
             <button
               key={idx}
               type="button"
               onClick={() => handleSelectPreset(p)}
-              className={`w-full p-3.5 rounded-2xl border text-left flex items-center justify-between transition-all duration-200 ${
+              className={`w-full p-3 sm:p-3.5 rounded-2xl border text-left flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 transition-all duration-200 ${
                 deliveryLocation.address === (p.address || p.full_address)
                   ? 'border-blue-600 bg-blue-50/80 ring-2 ring-blue-600/30 shadow-md'
                   : 'liquid-glass hover:bg-white/90 hover:shadow-md'
               }`}
             >
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-2.5 sm:gap-3 min-w-0 flex-1">
                 <div className="w-8 h-8 rounded-xl bg-blue-50/80 flex items-center justify-center flex-shrink-0 mt-0.5 border border-blue-200/60">
                   {renderIcon(p.iconType)}
                 </div>
-                <div>
-                  <div className="flex items-center gap-2">
+                <div className="min-w-0">
+                  <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
                     <p className="text-xs font-bold text-slate-900">{p.label}</p>
                     {deliveryLocation.address === (p.address || p.full_address) && (
                       <span className="bg-blue-600 text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded-full uppercase flex items-center gap-0.5">
@@ -228,7 +228,7 @@ export default function LocationModal() {
                   <p className="text-[11px] text-slate-500 line-clamp-1">{p.address || p.full_address}, {p.zip || p.zip_code}</p>
                 </div>
               </div>
-              <div className="flex items-center gap-2 flex-shrink-0">
+              <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0 ml-auto">
                 <span className="text-[10px] font-extrabold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full flex items-center gap-1 border border-emerald-200">
                   <Clock className="w-3 h-3 text-emerald-600" />
                   {p.eta || '15 mins'}
@@ -296,11 +296,11 @@ export default function LocationModal() {
               placeholder="Zip Code"
               value={zip}
               onChange={(e) => setZip(e.target.value)}
-              className="w-1/3 text-xs font-medium px-3.5 py-2.5 bg-white/80 backdrop-blur border border-white/80 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 shadow-inner"
+              className="w-24 sm:w-1/3 min-w-0 text-xs font-medium px-3 py-2.5 bg-white/80 backdrop-blur border border-white/80 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 shadow-inner"
             />
             <button
               type="submit"
-              className="flex-1 btn btn-primary text-xs py-2.5 rounded-xl font-bold shadow-md shadow-blue-600/20 active:scale-95"
+              className="flex-1 min-w-0 btn btn-primary text-xs py-2.5 px-3 rounded-xl font-bold shadow-md shadow-blue-600/20 active:scale-95 whitespace-nowrap"
             >
               Confirm Location
             </button>

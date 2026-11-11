@@ -66,13 +66,13 @@ export default function OrdersPage() {
   }
 
   return (
-    <div className="max-w-3xl mx-auto space-y-6 pb-16">
+    <div className="max-w-3xl mx-auto space-y-6 pb-4 md:pb-16">
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-2xl bg-blue-50/80 text-blue-600 flex items-center justify-center border border-blue-200/80 shadow-sm">
+        <div className="w-10 h-10 rounded-2xl bg-blue-50/80 text-blue-600 flex items-center justify-center border border-blue-200/80 shadow-sm flex-shrink-0">
           <Receipt className="w-5 h-5" />
         </div>
         <div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-heading">My Orders</h1>
+          <h1 className="text-xl sm:text-3xl font-extrabold text-slate-900 font-heading">My Orders</h1>
           <p className="text-xs text-slate-500 mt-0.5">
             Review recent grocery deliveries and real-time status.
           </p>
@@ -104,11 +104,11 @@ export default function OrdersPage() {
           {orders.map((order) => (
             <div
               key={order.id}
-              className="liquid-glass-card rounded-3xl p-5 sm:p-6 shadow-md hover:shadow-xl transition-all space-y-4"
+              className="liquid-glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-md hover:shadow-xl transition-all space-y-4"
             >
               {/* Order Top Bar */}
               <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-slate-100">
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <span className="font-mono text-xs font-bold text-blue-700 bg-blue-50 border border-blue-200 px-2.5 py-1 rounded-lg">
                     {order.order_number}
                   </span>
@@ -133,19 +133,19 @@ export default function OrdersPage() {
               {/* Order items preview */}
               <div className="divide-y divide-slate-100">
                 {order.items?.map((item) => (
-                  <div key={item.id} className="py-2.5 flex items-center justify-between text-xs">
-                    <div className="flex items-center gap-2.5 truncate max-w-[280px] sm:max-w-md">
+                  <div key={item.id} className="py-2.5 flex items-center justify-between gap-2 text-xs">
+                    <div className="flex items-center gap-2.5 min-w-0 flex-1 pr-2">
                       <img
                         src={item.product?.image_url || 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=80&q=80'}
                         alt={item.product?.name}
                         className="w-10 h-10 rounded-xl object-cover bg-slate-100 flex-shrink-0 border border-slate-100"
                       />
-                      <div className="truncate">
+                      <div className="min-w-0 truncate">
                         <p className="font-bold text-slate-800 truncate">{item.product?.name}</p>
                         <p className="text-[10px] text-slate-400">Qty: {item.quantity} • {formatINR(item.price)} each</p>
                       </div>
                     </div>
-                    <span className="font-extrabold text-slate-900 font-heading">
+                    <span className="font-extrabold text-slate-900 font-heading flex-shrink-0">
                       {formatINR(item.price * item.quantity)}
                     </span>
                   </div>

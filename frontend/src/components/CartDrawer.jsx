@@ -67,8 +67,8 @@ export default function CartDrawer() {
         onClick={() => setIsCartOpen(false)}
       />
 
-      <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
-        <div className="w-screen max-w-md liquid-glass-drawer flex flex-col justify-between animate-fade-in">
+      <div className="fixed inset-y-0 right-0 max-w-full flex pl-4 sm:pl-10">
+        <div className="w-screen max-w-md liquid-glass-drawer flex flex-col justify-between animate-fade-in safe-bottom">
           
           {/* Header */}
           <div className="p-4 sm:p-5 border-b border-white/60 flex items-center justify-between bg-white/40 backdrop-blur-md">
