@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useStore } from '../store';
 import { reviewsApi } from '../api';
+import { formatINR } from '../utils/currency';
 import toast from 'react-hot-toast';
 import {
   X,
@@ -132,11 +133,11 @@ export default function ProductModal() {
             {/* Price section */}
             <div className="flex items-baseline gap-2.5 mt-3">
               <span className="text-2xl font-extrabold text-blue-700 font-heading">
-                ${product.price.toFixed(2)}
+                {formatINR(product.price)}
               </span>
               {product.original_price && product.original_price > product.price && (
                 <span className="text-sm text-slate-400 line-through">
-                  ${product.original_price.toFixed(2)}
+                  {formatINR(product.original_price)}
                 </span>
               )}
             </div>
@@ -317,7 +318,7 @@ export default function ProductModal() {
               className="flex-1 btn btn-primary py-2.5 rounded-full font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-blue-600/25 active:scale-95"
             >
               <ShoppingCart className="w-4 h-4" />
-              <span>Add to Basket • ${(product.price * qty).toFixed(2)}</span>
+              <span>Add to Basket • {formatINR(product.price * qty)}</span>
             </button>
           </div>
 

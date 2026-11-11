@@ -3,6 +3,7 @@ import { categoriesApi, productsApi } from '../api';
 import ProductCard from '../components/ProductCard';
 import { useStore } from '../store';
 import { Link } from 'react-router-dom';
+import { formatINR, FREE_DELIVERY_THRESHOLD } from '../utils/currency';
 import { motion } from 'framer-motion';
 import {
   Zap,
@@ -12,13 +13,12 @@ import {
   ArrowRight,
   ChevronRight,
   LayoutGrid,
-  BadgeDollarSign,
+  IndianRupee,
   Star,
   Dumbbell,
   SearchX,
   ChevronDown,
   Truck,
-  CircleDollarSign,
   Clock,
   Sparkles
 } from 'lucide-react';
@@ -131,8 +131,8 @@ export default function HomePage() {
       const text = `${p.name} ${p.description}`.toLowerCase();
       return text.includes('organic') || text.includes('farm') || text.includes('wild');
     }
-    if (smartFilter === 'under5') {
-      return p.price <= 5.0;
+    if (smartFilter === 'under299') {
+      return p.price <= 299.0;
     }
     if (smartFilter === 'deals') {
       return p.is_on_sale || (p.original_price && p.original_price > p.price);
@@ -220,9 +220,9 @@ export default function HomePage() {
                   </span>
                   <p className="text-base font-extrabold text-white mt-1 font-heading tracking-tight">Organic Hass Avocados</p>
                   <p className="text-xs text-white font-extrabold mt-0.5 flex items-center gap-2">
-                    <span className="text-base font-black text-amber-300 font-heading">$3.99</span>
-                    <span className="text-[11px] text-blue-200 line-through">$5.49</span>
-                    <span className="text-[10px] font-bold text-emerald-300 bg-emerald-500/20 px-1.5 py-0.5 rounded-full border border-emerald-400/30">Save 27%</span>
+                    <span className="text-base font-black text-amber-300 font-heading">{formatINR(299)}</span>
+                    <span className="text-[11px] text-blue-200 line-through">{formatINR(399)}</span>
+                    <span className="text-[10px] font-bold text-emerald-300 bg-emerald-500/20 px-1.5 py-0.5 rounded-full border border-emerald-400/30">Save 25%</span>
                   </p>
                 </div>
               </div>
@@ -386,7 +386,7 @@ export default function HomePage() {
             {[
               { id: 'all', label: 'All Items', icon: LayoutGrid, activeColor: 'text-white', idleColor: 'text-blue-600' },
               { id: 'organic', label: '100% Organic', icon: Leaf, activeColor: 'text-white', idleColor: 'text-emerald-600' },
-              { id: 'under5', label: 'Under $5', icon: BadgeDollarSign, activeColor: 'text-white', idleColor: 'text-amber-600' },
+              { id: 'under299', label: 'Under ₹299', icon: IndianRupee, activeColor: 'text-white', idleColor: 'text-amber-600' },
               { id: 'deals', label: 'On Sale', icon: Flame, activeColor: 'text-white', idleColor: 'text-rose-600' },
               { id: 'topRated', label: '4.9+ Rated', icon: Star, activeColor: 'fill-white text-white', idleColor: 'fill-amber-400 text-amber-400' },
               { id: 'protein', label: 'High Protein', icon: Dumbbell, activeColor: 'text-white', idleColor: 'text-indigo-600' },
@@ -513,11 +513,11 @@ export default function HomePage() {
 
           <div className="p-5 rounded-2xl bg-slate-50 border border-slate-100 space-y-2.5">
             <div className="w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center mx-auto mb-2 shadow-sm border border-amber-200">
-              <CircleDollarSign className="w-6 h-6" />
+              <IndianRupee className="w-6 h-6" />
             </div>
             <h3 className="text-sm font-extrabold text-slate-900 font-heading">Fair Everyday Pricing</h3>
             <p className="text-xs text-slate-500 leading-relaxed">
-              No price gouging or hidden platform markups. Enjoy farm-direct prices with free delivery over $35.
+              No price gouging or hidden platform markups. Enjoy farm-direct prices with free delivery over {formatINR(FREE_DELIVERY_THRESHOLD)}.
             </p>
           </div>
         </div>

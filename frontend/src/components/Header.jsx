@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useStore } from '../store';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { productsApi } from '../api';
+import { formatINR } from '../utils/currency';
 import toast from 'react-hot-toast';
 import { motion } from 'framer-motion';
 import {
@@ -169,9 +170,9 @@ export default function Header() {
                         {product.name}
                       </h4>
                       <p className="text-[11px] text-slate-400">
-                        {product.unit} • <span className="font-extrabold text-slate-900">${product.price.toFixed(2)}</span>
+                        {product.unit} • <span className="font-extrabold text-slate-900">{formatINR(product.price)}</span>
                         {product.original_price && (
-                          <span className="line-through text-slate-300 ml-1.5">${product.original_price.toFixed(2)}</span>
+                          <span className="line-through text-slate-300 ml-1.5">{formatINR(product.original_price)}</span>
                         )}
                       </p>
                     </div>
@@ -503,7 +504,7 @@ export default function Header() {
                   )}
                 </div>
                 <span className="text-xs font-extrabold">
-                  ${getCartTotal().toFixed(2)}
+                  {formatINR(getCartTotal())}
                 </span>
               </button>
 

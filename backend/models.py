@@ -129,7 +129,7 @@ class Order(Base):
     address_id = Column(Integer, ForeignKey("addresses.id"), nullable=True)
     status = Column(Enum(OrderStatus), default=OrderStatus.pending)
     subtotal = Column(Float, nullable=False)
-    delivery_fee = Column(Float, default=2.99)
+    delivery_fee = Column(Float, default=29.0)
     discount = Column(Float, default=0.0)
     total = Column(Float, nullable=False)
     notes = Column(Text, nullable=True)

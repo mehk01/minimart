@@ -36,7 +36,7 @@ export const useStore = create((set, get) => ({
   wishlist: loadLocalWishlist(),
   searchQuery: '',
   activeCategory: 'all',
-  activeFilter: 'all', // 'all' | 'organic' | 'under5' | 'deals' | 'topRated'
+  activeFilter: 'all', // 'all' | 'organic' | 'under299' | 'deals' | 'topRated'
 
   // Delivery Location
   deliveryLocation: {

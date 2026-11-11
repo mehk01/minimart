@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useStore } from '../store';
 import { ordersApi, userApi } from '../api';
+import { formatINR, FREE_DELIVERY_THRESHOLD, STANDARD_DELIVERY_FEE, EXPRESS_DELIVERY_FEE } from '../utils/currency';
 import toast from 'react-hot-toast';
 import { motion } from 'framer-motion';
 import { triggerConfetti, playChime } from '../utils/effects';
@@ -61,9 +62,11 @@ export default function CheckoutModal() {
 
   const subtotal = getCartTotal();
   const isFreeDeliveryCoupon = appliedCoupon.toUpperCase() === 'FREEDELIVERY';
-  const deliveryFee = subtotal >= 35.0 || isFreeDeliveryCoupon ? 0.0 : (deliverySpeed === 'express' ? 3.99 : 2.99);
+  const deliveryFee = subtotal === 0 || subtotal >= FREE_DELIVERY_THRESHOLD || isFreeDeliveryCoupon
+    ? 0.0
+    : (deliverySpeed === 'express' ? EXPRESS_DELIVERY_FEE : STANDARD_DELIVERY_FEE);
   const discountAmount = appliedCoupon.toUpperCase() === 'SAVE20' ? subtotal * 0.20 : 0.0;
-  const total = Math.max(0, subtotal + deliveryFee - discountAmount).toFixed(2);
+  const total = Math.max(0, subtotal + deliveryFee - discountAmount);
 
   const handleApplyCoupon = (e) => {
     e.preventDefault();
@@ -161,7 +164,7 @@ export default function CheckoutModal() {
               </div>
               <div className="flex justify-between text-xs">
                 <span className="text-slate-500">Total Paid:</span>
-                <span className="font-extrabold text-slate-900 font-heading">${placedOrder.total?.toFixed(2) || total}</span>
+                <span className="font-extrabold text-slate-900 font-heading">{formatINR(placedOrder.total ?? total)}</span>
               </div>
               <div className="flex justify-between text-xs">
                 <span className="text-slate-500">Deliver To:</span>
@@ -411,21 +414,21 @@ export default function CheckoutModal() {
               <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200 space-y-1.5 text-xs text-slate-600">
                 <div className="flex justify-between">
                   <span>Basket Total ({cart.length} items)</span>
-                  <span className="font-semibold text-slate-900">${subtotal.toFixed(2)}</span>
+                  <span className="font-semibold text-slate-900">{formatINR(subtotal)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Delivery Fee</span>
-                  <span>{deliveryFee === 0 ? <strong className="text-emerald-600">FREE</strong> : `$${deliveryFee.toFixed(2)}`}</span>
+                  <span>{deliveryFee === 0 ? <strong className="text-emerald-600">FREE</strong> : formatINR(deliveryFee)}</span>
                 </div>
                 {discountAmount > 0 && (
                   <div className="flex justify-between text-emerald-600 font-bold">
                     <span>Discount ({appliedCoupon})</span>
-                    <span>-${discountAmount.toFixed(2)}</span>
+                    <span>-{formatINR(discountAmount)}</span>
                   </div>
                 )}
                 <div className="flex justify-between text-sm font-extrabold text-slate-900 pt-2 border-t border-slate-200">
                   <span>Total Due</span>
-                  <span className="text-base text-blue-700 font-heading">${total}</span>
+                  <span className="text-base text-blue-700 font-heading">{formatINR(total)}</span>
                 </div>
               </div>
 
@@ -441,7 +444,7 @@ export default function CheckoutModal() {
                 ) : (
                   <>
                     <Check className="w-4 h-4 stroke-[2.5]" />
-                    <span>Place Order • ${total}</span>
+                    <span>Place Order • {formatINR(total)}</span>
                   </>
                 )}
               </button>

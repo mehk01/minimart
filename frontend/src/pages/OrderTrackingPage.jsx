@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useStore } from '../store';
 import { ordersApi } from '../api';
+import { formatINR, STANDARD_DELIVERY_FEE } from '../utils/currency';
 import toast from 'react-hot-toast';
 import { motion } from 'framer-motion';
 import {
@@ -528,12 +529,12 @@ export default function OrderTrackingPage() {
                       {item.product?.name || `Grocery Item #${idx + 1}`}
                     </h4>
                     <p className="text-[11px] text-slate-400 print:text-slate-600">
-                      Qty: <strong className="text-slate-700">{item.quantity}</strong> × ${(item.unit_price || item.product?.price || 0).toFixed(2)}
+                      Qty: <strong className="text-slate-700">{item.quantity}</strong> × {formatINR(item.unit_price || item.product?.price || 0)}
                     </p>
                   </div>
                 </div>
                 <strong className="text-xs font-extrabold text-slate-900 flex-shrink-0 font-heading print:text-sm">
-                  ${((item.unit_price || item.product?.price || 0) * item.quantity).toFixed(2)}
+                  {formatINR((item.unit_price || item.product?.price || 0) * item.quantity)}
                 </strong>
               </div>
             ))}
@@ -544,13 +545,13 @@ export default function OrderTrackingPage() {
         <div className="pt-3 border-t border-slate-100 space-y-2 text-xs print:border-slate-300">
           <div className="flex justify-between text-slate-500 print:text-slate-700">
             <span>Items Subtotal</span>
-            <span className="font-semibold text-slate-800">${(order?.subtotal || order?.total || 24.50).toFixed(2)}</span>
+            <span className="font-semibold text-slate-800">{formatINR(order?.subtotal ?? order?.total ?? 499)}</span>
           </div>
 
           {order?.discount > 0 && (
             <div className="flex justify-between text-emerald-600 font-semibold print:text-emerald-800">
               <span>Coupon Promo Discount</span>
-              <span>-${order.discount.toFixed(2)}</span>
+              <span>-{formatINR(order.discount)}</span>
             </div>
           )}
 
@@ -560,14 +561,14 @@ export default function OrderTrackingPage() {
               {order?.delivery_fee === 0 ? (
                 <span className="text-emerald-600 font-bold uppercase text-[10px] print:text-emerald-800">FREE</span>
               ) : (
-                `$${(order?.delivery_fee || 2.99).toFixed(2)}`
+                formatINR(order?.delivery_fee ?? STANDARD_DELIVERY_FEE)
               )}
             </span>
           </div>
 
           <div className="pt-3 border-t border-slate-200 flex justify-between text-base font-extrabold text-slate-900 print:border-t-2 print:border-slate-900">
             <span>Grand Total Paid</span>
-            <span className="text-blue-700 font-heading text-base print:text-slate-900">${(order?.total || 24.50).toFixed(2)}</span>
+            <span className="text-blue-700 font-heading text-base print:text-slate-900">{formatINR(order?.total ?? 499)}</span>
           </div>
         </div>
 

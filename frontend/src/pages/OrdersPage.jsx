@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ordersApi } from '../api';
 import { useStore } from '../store';
+import { formatINR } from '../utils/currency';
 import { Link } from 'react-router-dom';
 import {
   Receipt,
@@ -141,11 +142,11 @@ export default function OrdersPage() {
                       />
                       <div className="truncate">
                         <p className="font-bold text-slate-800 truncate">{item.product?.name}</p>
-                        <p className="text-[10px] text-slate-400">Qty: {item.quantity} • ${item.price.toFixed(2)} each</p>
+                        <p className="text-[10px] text-slate-400">Qty: {item.quantity} • {formatINR(item.price)} each</p>
                       </div>
                     </div>
                     <span className="font-extrabold text-slate-900 font-heading">
-                      ${(item.price * item.quantity).toFixed(2)}
+                      {formatINR(item.price * item.quantity)}
                     </span>
                   </div>
                 ))}
@@ -177,7 +178,7 @@ export default function OrdersPage() {
                 <div className="text-right">
                   <span className="text-slate-500 mr-2">Total Paid:</span>
                   <span className="text-base font-extrabold text-blue-700 font-heading">
-                    ${order.total.toFixed(2)}
+                    {formatINR(order.total)}
                   </span>
                 </div>
               </div>

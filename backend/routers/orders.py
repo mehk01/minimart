@@ -35,7 +35,7 @@ def create_order(
             )
 
     subtotal = sum(item.product.price * item.quantity for item in cart_items)
-    delivery_fee = 0.0 if subtotal >= 35.0 else 2.99
+    delivery_fee = 0.0 if subtotal >= 499.0 else 29.0
     discount = 0.0
 
     if order_in.coupon_code:

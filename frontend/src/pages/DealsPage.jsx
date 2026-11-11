@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { productsApi } from '../api';
+import { FREE_DELIVERY_THRESHOLD, formatINR } from '../utils/currency';
 import ProductCard from '../components/ProductCard';
 import toast from 'react-hot-toast';
 import { Flame, Tag, Copy, Truck, Check } from 'lucide-react';
@@ -103,7 +104,7 @@ export default function DealsPage() {
                   <span className="text-xs font-extrabold text-emerald-600">FREE RUSH</span>
                 </div>
                 <p className="text-xs text-slate-500 mt-1">
-                  Free 15-min delivery automatically on orders over $35.
+                  Free 15-min delivery automatically on orders over {formatINR(FREE_DELIVERY_THRESHOLD)}.
                 </p>
               </div>
             </div>

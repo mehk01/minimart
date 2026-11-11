@@ -1,6 +1,7 @@
 import React from 'react';
 import { useStore } from '../store';
 import { playChime } from '../utils/effects';
+import { formatINR } from '../utils/currency';
 import { Heart, Star, Plus, Minus } from 'lucide-react';
 
 export default function ProductCard({ product }) {
@@ -100,11 +101,11 @@ export default function ProductCard({ product }) {
           <div>
             <div className="flex items-baseline gap-1.5">
               <span className="text-base sm:text-lg font-extrabold text-slate-900 font-heading">
-                ${product.price.toFixed(2)}
+                {formatINR(product.price)}
               </span>
               {product.original_price && product.original_price > product.price && (
                 <span className="text-xs text-slate-400 line-through">
-                  ${product.original_price.toFixed(2)}
+                  {formatINR(product.original_price)}
                 </span>
               )}
             </div>

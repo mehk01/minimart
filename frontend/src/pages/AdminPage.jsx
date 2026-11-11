@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ordersApi, productsApi, categoriesApi } from '../api';
+import { formatINR } from '../utils/currency';
 import { useStore } from '../store';
 import toast from 'react-hot-toast';
 import { motion } from 'framer-motion';
@@ -312,7 +313,7 @@ export default function AdminPage() {
                         {o.items?.length || 1} items
                       </td>
                       <td className="py-3 px-4 font-extrabold text-slate-900 font-heading">
-                        ${o.total.toFixed(2)}
+                        {formatINR(o.total)}
                       </td>
                       <td className="py-3 px-4">
                         <span className="bg-slate-100 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase text-slate-600 border border-slate-200">
@@ -394,9 +395,9 @@ export default function AdminPage() {
                       {p.category?.name || 'Produce'}
                     </td>
                     <td className="py-3 px-4 font-extrabold text-slate-900 font-heading">
-                      ${p.price.toFixed(2)}
+                      {formatINR(p.price)}
                       {p.original_price && (
-                        <span className="text-[10px] text-slate-400 line-through ml-1">${p.original_price.toFixed(2)}</span>
+                        <span className="text-[10px] text-slate-400 line-through ml-1">{formatINR(p.original_price)}</span>
                       )}
                     </td>
                     <td className="py-3 px-4">
@@ -536,14 +537,14 @@ export default function AdminPage() {
 
               <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <label className="text-xs font-bold text-slate-700 block mb-1">Price ($)</label>
+                  <label className="text-xs font-bold text-slate-700 block mb-1">Price (₹)</label>
                   <input
                     type="number"
                     step="0.01"
                     required
                     value={newProdPrice}
                     onChange={(e) => setNewProdPrice(e.target.value)}
-                    placeholder="3.99"
+                    placeholder="299"
                     className="w-full text-xs px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl shadow-inner"
                   />
                 </div>

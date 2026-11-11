@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useStore } from '../store';
+import { formatINR, FREE_DELIVERY_THRESHOLD, STANDARD_DELIVERY_FEE } from '../utils/currency';
 import toast from 'react-hot-toast';
 import {
   ShoppingCart,
@@ -35,8 +36,8 @@ export default function CartDrawer() {
   if (!isCartOpen) return null;
 
   const subtotal = getCartTotal();
-  const freeDeliveryThreshold = 35.0;
-  const deliveryFee = subtotal >= freeDeliveryThreshold || subtotal === 0 ? 0.0 : 2.99;
+  const freeDeliveryThreshold = FREE_DELIVERY_THRESHOLD;
+  const deliveryFee = subtotal >= freeDeliveryThreshold || subtotal === 0 ? 0.0 : STANDARD_DELIVERY_FEE;
   const discountAmount = isCouponApplied ? subtotal * appliedDiscount : 0.0;
   const grandTotal = Math.max(0, subtotal + deliveryFee - discountAmount);
   const amountToFreeDelivery = Math.max(0, freeDeliveryThreshold - subtotal);
@@ -95,7 +96,7 @@ export default function CartDrawer() {
               {amountToFreeDelivery > 0 ? (
                 <span className="text-slate-700 flex items-center gap-1.5">
                   <Truck className="w-3.5 h-3.5 text-blue-600" />
-                  Add <strong className="text-blue-700">${amountToFreeDelivery.toFixed(2)}</strong> for FREE Delivery!
+                  Add <strong className="text-blue-700">{formatINR(amountToFreeDelivery)}</strong> for FREE Delivery!
                 </span>
               ) : (
                 <span className="text-emerald-700 flex items-center gap-1.5">
@@ -150,7 +151,7 @@ export default function CartDrawer() {
                     <span className="text-[11px] text-slate-400 block">{item.unit || 'piece'}</span>
                     <div className="flex items-center justify-between mt-1.5">
                       <span className="text-xs font-extrabold text-blue-700">
-                        ${(item.price * item.quantity).toFixed(2)}
+                        {formatINR(item.price * item.quantity)}
                       </span>
 
                       {/* Stepper controls */}
@@ -218,21 +219,21 @@ export default function CartDrawer() {
               <div className="space-y-1.5 text-xs text-slate-600">
                 <div className="flex justify-between">
                   <span>Subtotal</span>
-                  <span className="font-semibold text-slate-800">${subtotal.toFixed(2)}</span>
+                  <span className="font-semibold text-slate-800">{formatINR(subtotal)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Delivery Fee</span>
-                  <span>{deliveryFee === 0 ? <strong className="text-emerald-600">FREE</strong> : `$${deliveryFee.toFixed(2)}`}</span>
+                  <span>{deliveryFee === 0 ? <strong className="text-emerald-600">FREE</strong> : formatINR(deliveryFee)}</span>
                 </div>
                 {isCouponApplied && (
                   <div className="flex justify-between text-emerald-600 font-semibold">
                     <span>Discount (20% off)</span>
-                    <span>-${discountAmount.toFixed(2)}</span>
+                    <span>-{formatINR(discountAmount)}</span>
                   </div>
                 )}
                 <div className="flex justify-between text-sm font-extrabold text-slate-900 pt-2 border-t border-slate-200">
                   <span>Estimated Total</span>
-                  <span className="text-base text-blue-700 font-heading">${grandTotal.toFixed(2)}</span>
+                  <span className="text-base text-blue-700 font-heading">{formatINR(grandTotal)}</span>
                 </div>
               </div>
 
