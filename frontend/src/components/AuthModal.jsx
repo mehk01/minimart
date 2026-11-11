@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useStore } from '../store';
 import { motion } from 'framer-motion';
+import GoogleSignInButton from './GoogleSignInButton';
 import {
   X,
   ShoppingBag,
@@ -13,7 +14,7 @@ import {
 } from 'lucide-react';
 
 export default function AuthModal() {
-  const { isAuthModalOpen, setIsAuthModalOpen, login, register, quickDemoLogin } = useStore();
+  const { isAuthModalOpen, setIsAuthModalOpen, login, register, googleLogin, quickDemoLogin } = useStore();
   const [tab, setTab] = useState('login'); // 'login' | 'register'
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -37,6 +38,12 @@ export default function AuthModal() {
   const handleDemo = async (role) => {
     setIsLoading(true);
     await quickDemoLogin(role);
+    setIsLoading(false);
+  };
+
+  const handleGoogleCredential = async (credential) => {
+    setIsLoading(true);
+    await googleLogin(credential);
     setIsLoading(false);
   };
 
@@ -68,6 +75,19 @@ export default function AuthModal() {
           <p className="text-xs text-slate-500 mt-1">
             {tab === 'login' ? 'Sign in to access your orders and saved basket' : 'Join MiniMart for 15-minute grocery delivery'}
           </p>
+        </div>
+
+        {/* Google Sign-In */}
+        <div className="mb-4">
+          <GoogleSignInButton onCredential={handleGoogleCredential} disabled={isLoading} />
+        </div>
+
+        <div className="relative flex items-center justify-center mb-4">
+          <div className="border-t border-slate-200 w-full"></div>
+          <span className="bg-white/90 px-3 text-[10px] font-bold uppercase tracking-wider text-slate-400 whitespace-nowrap">
+            or use email
+          </span>
+          <div className="border-t border-slate-200 w-full"></div>
         </div>
 
         {/* 1-Click Demo Buttons */}

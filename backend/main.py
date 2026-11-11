@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 
-from database import engine, Base
+from database import engine, Base, ensure_user_google_schema
 import models
 from routers import auth, categories, products, cart, orders, user_data, reviews
 from seed import seed_database
@@ -11,8 +11,9 @@ from seed import seed_database
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Create tables and auto-seed if needed
+    # Create tables, migrate SQLite auth columns if needed, and auto-seed
     Base.metadata.create_all(bind=engine)
+    ensure_user_google_schema()
     try:
         seed_database()
     except Exception as e:

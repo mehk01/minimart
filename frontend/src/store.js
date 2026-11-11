@@ -89,34 +89,7 @@ export const useStore = create((set, get) => ({
   login: async (email, password) => {
     try {
       const res = await authApi.login(email, password);
-      const token = res.data.access_token;
-      const refreshToken = res.data.refresh_token;
-      localStorage.setItem('minimart_token', token);
-      if (refreshToken) {
-        localStorage.setItem('minimart_refresh_token', refreshToken);
-      }
-      set({ token, isAuthenticated: true, isAuthModalOpen: false });
-      
-      const userRes = await authApi.getMe();
-      set({ user: userRes.data });
-      toast.success(`Welcome back, ${userRes.data.full_name}!`);
-      
-      // Merge guest items if any
-      const currentLocalCart = get().cart;
-      if (currentLocalCart.length > 0) {
-        try {
-          await cartApi.merge(currentLocalCart.map(i => ({
-            product_id: i.productId || i.id,
-            quantity: i.quantity
-          })));
-        } catch (mergeErr) {
-          console.error('Cart merge error on login:', mergeErr);
-        }
-      }
-
-      await get().syncCartFromBackend();
-      await get().syncWishlistFromBackend();
-      return true;
+      return await get()._completeAuthSession(res.data, 'Welcome back');
     } catch (err) {
       toast.error(err.response?.data?.detail || 'Invalid email or password');
       return false;
@@ -126,38 +99,52 @@ export const useStore = create((set, get) => ({
   register: async (userData) => {
     try {
       const res = await authApi.register(userData);
-      const token = res.data.access_token;
-      const refreshToken = res.data.refresh_token;
-      localStorage.setItem('minimart_token', token);
-      if (refreshToken) {
-        localStorage.setItem('minimart_refresh_token', refreshToken);
-      }
-      set({ token, isAuthenticated: true, isAuthModalOpen: false });
-      
-      const userRes = await authApi.getMe();
-      set({ user: userRes.data });
-      toast.success(`Welcome to MiniMart, ${userRes.data.full_name}!`);
-
-      // Merge guest items if any
-      const currentLocalCart = get().cart;
-      if (currentLocalCart.length > 0) {
-        try {
-          await cartApi.merge(currentLocalCart.map(i => ({
-            product_id: i.productId || i.id,
-            quantity: i.quantity
-          })));
-        } catch (mergeErr) {
-          console.error('Cart merge error on register:', mergeErr);
-        }
-      }
-
-      await get().syncCartFromBackend();
-      await get().syncWishlistFromBackend();
-      return true;
+      return await get()._completeAuthSession(res.data, 'Welcome to MiniMart');
     } catch (err) {
       toast.error(err.response?.data?.detail || 'Registration failed');
       return false;
     }
+  },
+
+  googleLogin: async (credential) => {
+    try {
+      const res = await authApi.googleLogin(credential);
+      return await get()._completeAuthSession(res.data, 'Signed in as');
+    } catch (err) {
+      toast.error(err.response?.data?.detail || 'Google Sign-In failed');
+      return false;
+    }
+  },
+
+  _completeAuthSession: async (tokenData, welcomePrefix) => {
+    const token = tokenData.access_token;
+    const refreshToken = tokenData.refresh_token;
+    localStorage.setItem('minimart_token', token);
+    if (refreshToken) {
+      localStorage.setItem('minimart_refresh_token', refreshToken);
+    }
+    set({ token, isAuthenticated: true, isAuthModalOpen: false });
+
+    const userRes = await authApi.getMe();
+    set({ user: userRes.data });
+    toast.success(`${welcomePrefix}, ${userRes.data.full_name}!`);
+
+    // Merge guest items if any
+    const currentLocalCart = get().cart;
+    if (currentLocalCart.length > 0) {
+      try {
+        await cartApi.merge(currentLocalCart.map(i => ({
+          product_id: i.productId || i.id,
+          quantity: i.quantity
+        })));
+      } catch (mergeErr) {
+        console.error('Cart merge error after auth:', mergeErr);
+      }
+    }
+
+    await get().syncCartFromBackend();
+    await get().syncWishlistFromBackend();
+    return true;
   },
 
   logout: () => {

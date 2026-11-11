@@ -35,6 +35,10 @@ class RefreshTokenRequest(BaseModel):
     refresh_token: str
 
 
+class GoogleAuthRequest(BaseModel):
+    credential: str
+
+
 # ── User ─────────────────────────────────────────────────────────────────────
 
 class UserResponse(BaseModel):
@@ -44,6 +48,7 @@ class UserResponse(BaseModel):
     phone: Optional[str]
     role: UserRole
     avatar_url: Optional[str]
+    auth_provider: Optional[str] = "local"
     created_at: datetime
 
     class Config:

@@ -409,6 +409,7 @@ export default function Header() {
                     <img
                       src={user.avatar_url || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80'}
                       alt={user.full_name}
+                      referrerPolicy="no-referrer"
                       className="w-7 h-7 sm:w-8 sm:h-8 rounded-full object-cover ring-2 ring-blue-500/30 shadow-sm"
                     />
                     <span className="hidden lg:block text-xs font-bold max-w-[100px] truncate text-slate-800">
