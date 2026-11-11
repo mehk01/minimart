@@ -16,7 +16,7 @@ const loadLocalCart = () => {
 const saveLocalCart = (items) => {
   try {
     localStorage.setItem('minimart_local_cart', JSON.stringify(items));
-  } catch {}
+  } catch { }
 };
 
 const loadLocalWishlist = () => {
@@ -37,7 +37,7 @@ export const useStore = create((set, get) => ({
   searchQuery: '',
   activeCategory: 'all',
   activeFilter: 'all', // 'all' | 'organic' | 'under5' | 'deals' | 'topRated'
-  
+
   // Delivery Location
   deliveryLocation: {
     id: null,
@@ -55,7 +55,7 @@ export const useStore = create((set, get) => ({
   isLocationModalOpen: false,
   selectedProduct: null,
   activeOrderForTracking: null,
-  
+
   // Setters
   setSearchQuery: (query) => set({ searchQuery: query }),
   setActiveCategory: (cat) => set({ activeCategory: cat }),
@@ -154,12 +154,12 @@ export const useStore = create((set, get) => ({
     saveLocalCart([]);
     try {
       localStorage.removeItem('minimart_wishlist');
-    } catch {}
+    } catch { }
     toast.success('Logged out successfully');
   },
 
   quickDemoLogin: async (role = 'customer') => {
-    const creds = role === 'admin' 
+    const creds = role === 'admin'
       ? { email: 'admin@minimart.com', pass: 'admin123' }
       : { email: 'demo@minimart.com', pass: 'customer123' };
     return await get().login(creds.email, creds.pass);
@@ -323,7 +323,7 @@ export const useStore = create((set, get) => ({
     set({ wishlist: next });
     try {
       localStorage.setItem('minimart_wishlist', JSON.stringify(next));
-    } catch {}
+    } catch { }
 
     toast(exists ? 'Removed from saved items' : 'Saved to favorites ❤️', { duration: 1500 });
 

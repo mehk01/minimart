@@ -115,3 +115,4 @@ export default function GoogleSignInButton({ onCredential, disabled = false }) {
     </div>
   );
 }
+

@@ -123,9 +123,8 @@ export default function AuthModal() {
           <button
             type="button"
             onClick={() => setTab('login')}
-            className={`relative flex-1 py-2.5 rounded-xl text-xs font-bold transition-colors duration-250 ease-out z-10 cursor-pointer ${
-              tab === 'login' ? 'text-blue-700 font-extrabold' : 'text-slate-500 hover:text-slate-800'
-            }`}
+            className={`relative flex-1 py-2.5 rounded-xl text-xs font-bold transition-colors duration-250 ease-out z-10 cursor-pointer ${tab === 'login' ? 'text-blue-700 font-extrabold' : 'text-slate-500 hover:text-slate-800'
+              }`}
           >
             {tab === 'login' && (
               <motion.div
@@ -139,9 +138,8 @@ export default function AuthModal() {
           <button
             type="button"
             onClick={() => setTab('register')}
-            className={`relative flex-1 py-2.5 rounded-xl text-xs font-bold transition-colors duration-250 ease-out z-10 cursor-pointer ${
-              tab === 'register' ? 'text-blue-700 font-extrabold' : 'text-slate-500 hover:text-slate-800'
-            }`}
+            className={`relative flex-1 py-2.5 rounded-xl text-xs font-bold transition-colors duration-250 ease-out z-10 cursor-pointer ${tab === 'register' ? 'text-blue-700 font-extrabold' : 'text-slate-500 hover:text-slate-800'
+              }`}
           >
             {tab === 'register' && (
               <motion.div

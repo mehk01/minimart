@@ -1,3 +1,4 @@
+import importlib
 import json
 import urllib.request
 from datetime import datetime, timedelta
@@ -54,8 +55,8 @@ def verify_google_id_token(token: str) -> dict:
             detail="Google Sign-In is not configured on the server",
         )
     try:
-        from google.oauth2 import id_token as google_id_token
-        from google.auth.transport import requests as google_requests
+        google_id_token = importlib.import_module("google.oauth2.id_token")
+        google_requests = importlib.import_module("google.auth.transport.requests")
 
         idinfo = google_id_token.verify_oauth2_token(
             token,
