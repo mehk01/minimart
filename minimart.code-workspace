@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"css.lint.unknownAtRules": "ignore",
+		"scss.lint.unknownAtRules": "ignore",
+		"less.lint.unknownAtRules": "ignore",
+		"python.analysis.extraPaths": [
+			"./backend"
+		],
+		"python.autoComplete.extraPaths": [
+			"./backend"
+		]
+	}
+}
