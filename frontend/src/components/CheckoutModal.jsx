@@ -36,7 +36,7 @@ export default function CheckoutModal() {
   const navigate = useNavigate();
   const [paymentMethod, setPaymentMethod] = useState('cash_on_delivery');
   const [deliverySpeed, setDeliverySpeed] = useState('express');
-  const [address, setAddress] = useState('742 Evergreen Terrace, Apt 4B, Springfield, IL 62704');
+  const [address, setAddress] = useState('12th Main Road, HAL 2nd Stage, Indiranagar, Bangalore, KA 560038');
   const [deliveryNotes, setDeliveryNotes] = useState('Leave with doorman or ring doorbell.');
   const [couponInput, setCouponInput] = useState('');
   const [appliedCoupon, setAppliedCoupon] = useState('');
@@ -54,7 +54,7 @@ export default function CheckoutModal() {
             setAddress(`${def.full_address}, ${def.city}, ${def.state} ${def.zip_code}`);
           }
         })
-        .catch(() => {});
+        .catch(() => { });
     }
   }, [isAuthenticated]);
 
@@ -142,7 +142,7 @@ export default function CheckoutModal() {
             <div className="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto shadow-inner border border-emerald-200">
               <CheckCircle2 className="w-8 h-8 text-emerald-600" />
             </div>
-            
+
             <h2 className="text-2xl font-extrabold text-slate-900 font-heading">
               Order Placed Successfully!
             </h2>
@@ -248,7 +248,7 @@ export default function CheckoutModal() {
             )}
 
             <div className="space-y-5">
-              
+
               {/* Delivery Address */}
               <div>
                 <label className="text-xs font-bold text-slate-700 block mb-1.5 flex items-center gap-1.5">
@@ -281,11 +281,10 @@ export default function CheckoutModal() {
                         key={speed.id}
                         type="button"
                         onClick={() => setDeliverySpeed(speed.id)}
-                        className={`relative p-2.5 sm:p-3 rounded-2xl border text-left flex items-start gap-2 sm:gap-2.5 min-w-0 transition-colors duration-250 ease-out z-10 cursor-pointer ${
-                          isSelected
+                        className={`relative p-2.5 sm:p-3 rounded-2xl border text-left flex items-start gap-2 sm:gap-2.5 min-w-0 transition-colors duration-250 ease-out z-10 cursor-pointer ${isSelected
                             ? 'border-blue-600'
                             : 'border-white/80 liquid-glass hover:bg-white'
-                        }`}
+                          }`}
                       >
                         {isSelected && (
                           <motion.div

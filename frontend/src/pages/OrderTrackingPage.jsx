@@ -77,7 +77,7 @@ export default function OrderTrackingPage() {
             setEtaMinutes(0);
           }
         })
-        .catch(() => {});
+        .catch(() => { });
     };
 
     fetchOrder();
@@ -89,7 +89,7 @@ export default function OrderTrackingPage() {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [chatInput, setChatInput] = useState('');
   const [chatMessages, setChatMessages] = useState([
-    { sender: 'marco', text: 'Hi! I picked up your grocery basket from Springfield Hub. Moving fast on my electric scooter!', time: '10:12 AM' }
+    { sender: 'marco', text: 'Hi! I picked up your grocery basket from Bangalore Central Hub. Moving fast on my electric scooter!', time: '10:12 AM' }
   ]);
 
   const handleSimulateStep = (newStep) => {
@@ -164,7 +164,7 @@ export default function OrderTrackingPage() {
 
   return (
     <div className="max-w-3xl mx-auto space-y-5 sm:space-y-6 pb-4 md:pb-16 print:p-0 print:m-0 print:space-y-0 print:max-w-none">
-      
+
       {/* Top Bar Navigation (Hidden in Print/PDF) */}
       <div className="flex flex-wrap items-center justify-between gap-2 print:hidden">
         <Link to="/orders" className="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1.5">
@@ -196,18 +196,16 @@ export default function OrderTrackingPage() {
               <button
                 key={item.s}
                 onClick={() => handleSimulateStep(item.s)}
-                className={`relative px-2.5 sm:px-3.5 py-1.5 rounded-full font-bold transition-colors duration-250 ease-out active:scale-95 text-[11px] sm:text-xs flex items-center gap-1 sm:gap-1.5 z-10 cursor-pointer whitespace-nowrap ${
-                  isSelected ? 'text-white' : 'text-slate-600 hover:text-slate-900'
-                }`}
+                className={`relative px-2.5 sm:px-3.5 py-1.5 rounded-full font-bold transition-colors duration-250 ease-out active:scale-95 text-[11px] sm:text-xs flex items-center gap-1 sm:gap-1.5 z-10 cursor-pointer whitespace-nowrap ${isSelected ? 'text-white' : 'text-slate-600 hover:text-slate-900'
+                  }`}
               >
                 {isSelected && (
                   <motion.div
                     layoutId="activeSimulationStep"
-                    className={`absolute inset-0 rounded-full shadow-md shadow-blue-500/30 -z-10 ${
-                      item.s === 4
+                    className={`absolute inset-0 rounded-full shadow-md shadow-blue-500/30 -z-10 ${item.s === 4
                         ? 'bg-gradient-to-r from-emerald-600 to-teal-600 shadow-emerald-500/30'
                         : 'bg-gradient-to-r from-blue-600 to-indigo-600'
-                    }`}
+                      }`}
                     transition={{ type: 'spring', stiffness: 450, damping: 32 }}
                   />
                 )}
@@ -221,10 +219,10 @@ export default function OrderTrackingPage() {
 
       {/* Main Delivery Map & Courier Card (Strictly Hidden in Print/PDF) */}
       <div className="liquid-glass-card rounded-2xl sm:rounded-3xl shadow-xl overflow-hidden print:hidden">
-        
+
         {/* Animated Map Graphic Container */}
         <div className="relative bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 h-56 sm:h-72 p-3.5 sm:p-6 overflow-hidden flex flex-col justify-between">
-          
+
           {/* Stylized Map Grid Overlay */}
           <div className="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,#38bdf8_1px,transparent_1px),linear-gradient(to_bottom,#38bdf8_1px,transparent_1px)] bg-[size:32px_32px]"></div>
 
@@ -241,7 +239,7 @@ export default function OrderTrackingPage() {
             <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-blue-600 text-white flex items-center justify-center shadow-lg shadow-blue-500/50 ring-4 ring-blue-900/60 border border-white/20">
               <Store className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
             </div>
-            <span className="text-[9px] sm:text-[10px] font-bold text-blue-200 mt-1.5 whitespace-nowrap">Springfield Hub</span>
+            <span className="text-[9px] sm:text-[10px] font-bold text-blue-200 mt-1.5 whitespace-nowrap">Bangalore Hub</span>
           </div>
 
           {/* Customer House Icon (Destination) */}
@@ -291,7 +289,7 @@ export default function OrderTrackingPage() {
         {/* Stepper Progress */}
         <div className="p-3.5 sm:p-6 bg-slate-50/60 backdrop-blur-md border-b border-white/80">
           <div className="flex items-center justify-between max-w-lg mx-auto relative">
-            
+
             {/* Step 1 */}
             <div className="flex flex-col items-center z-10 text-center">
               <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-extrabold shadow-md border border-white/40">
@@ -305,9 +303,8 @@ export default function OrderTrackingPage() {
 
             {/* Step 2 */}
             <div className="flex flex-col items-center z-10 text-center">
-              <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs font-extrabold shadow-md border border-white/40 ${
-                step >= 2 ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-500'
-              }`}>
+              <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs font-extrabold shadow-md border border-white/40 ${step >= 2 ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-500'
+                }`}>
                 {step > 2 ? <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" /> : <PackageCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4" />}
               </div>
               <span className="text-[10px] sm:text-[11px] font-bold text-slate-800 mt-1.5">Packed Fresh</span>
@@ -318,9 +315,8 @@ export default function OrderTrackingPage() {
 
             {/* Step 3 */}
             <div className="flex flex-col items-center z-10 text-center">
-              <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs font-extrabold shadow-md border border-white/40 ${
-                step >= 3 ? 'bg-blue-600 text-white animate-pulse' : 'bg-slate-100 text-slate-400 border-slate-300'
-              }`}>
+              <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs font-extrabold shadow-md border border-white/40 ${step >= 3 ? 'bg-blue-600 text-white animate-pulse' : 'bg-slate-100 text-slate-400 border-slate-300'
+                }`}>
                 <Truck className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </div>
               <span className={`text-[10px] sm:text-[11px] font-bold mt-1.5 ${step >= 3 ? 'text-blue-700' : 'text-slate-400'}`}>On The Way</span>
@@ -331,9 +327,8 @@ export default function OrderTrackingPage() {
 
             {/* Step 4 */}
             <div className="flex flex-col items-center z-10 text-center">
-              <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs font-extrabold shadow-md border border-white/40 ${
-                step >= 4 ? 'bg-emerald-600 text-white' : 'bg-slate-100 text-slate-400 border-slate-300'
-              }`}>
+              <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs font-extrabold shadow-md border border-white/40 ${step >= 4 ? 'bg-emerald-600 text-white' : 'bg-slate-100 text-slate-400 border-slate-300'
+                }`}>
                 <Home className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </div>
               <span className="text-[10px] sm:text-[11px] font-bold text-slate-400 mt-1.5">Delivered</span>
@@ -345,7 +340,7 @@ export default function OrderTrackingPage() {
 
         {/* Courier & Shopper Card */}
         <div className="p-4 sm:p-6 divide-y divide-slate-100">
-          
+
           <div className="pb-4 flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-3 min-w-0">
               <img
@@ -405,7 +400,7 @@ export default function OrderTrackingPage() {
 
       {/* Itemized Order Invoice & Receipt (Exclusively Formatted for PDF / Print & Web) */}
       <div className="printable-order-invoice liquid-glass-card rounded-2xl sm:rounded-3xl shadow-lg p-4 sm:p-8 space-y-6 print:bg-white print:backdrop-blur-none print:border-none print:shadow-none print:p-0">
-        
+
         {/* Official Tax Invoice Letterhead - Visible ONLY in Print/PDF */}
         <div className="hidden print:block pb-6 mb-6 border-b-2 border-slate-900">
           <div className="flex items-start justify-between">
@@ -417,10 +412,10 @@ export default function OrderTrackingPage() {
                 MiniMart Hyperlocal Express Groceries Inc.
               </p>
               <p className="text-[10px] text-slate-500">
-                GST/Tax ID: US-89-492104-X • Darkstore Station #104 Springfield
+                GSTIN: 29AABCM1234F1Z5 • Darkstore Station #104 Bangalore
               </p>
               <p className="text-[10px] text-slate-500">
-                Support: orders@minimart.express • +1 (800) 555-0199
+                Support: orders@minimart.express • +91 80 4567 8900
               </p>
             </div>
 
@@ -663,11 +658,10 @@ export default function OrderTrackingPage() {
                     className={`flex flex-col ${m.sender === 'user' ? 'items-end' : 'items-start'}`}
                   >
                     <div
-                      className={`max-w-[80%] rounded-2xl px-3.5 py-2 text-xs font-medium leading-relaxed ${
-                        m.sender === 'user'
+                      className={`max-w-[80%] rounded-2xl px-3.5 py-2 text-xs font-medium leading-relaxed ${m.sender === 'user'
                           ? 'bg-blue-600 text-white rounded-br-none shadow-sm'
                           : 'bg-slate-100 text-slate-800 rounded-bl-none'
-                      }`}
+                        }`}
                     >
                       {m.text}
                     </div>

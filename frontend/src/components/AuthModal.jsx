@@ -198,7 +198,7 @@ export default function AuthModal() {
                   type="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  placeholder="+1 555-0199"
+                  placeholder="+91 98765 43210"
                   className="w-full text-xs pl-9 pr-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:border-blue-500 shadow-inner"
                 />
               </div>

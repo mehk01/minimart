@@ -32,9 +32,9 @@ def test_phase2():
         address_in=schemas.AddressCreate(
             label="Lake House",
             full_address="4500 Lake Shore Drive",
-            city="Springfield",
-            state="IL",
-            zip_code="62704",
+            city="Bangalore",
+            state="KA",
+            zip_code="560038",
             is_default=False
         ),
         current_user=demo_user,
@@ -47,9 +47,9 @@ def test_phase2():
         address_update=schemas.AddressUpdate(
             label="Penthouse Suite",
             full_address="4500 Lake Shore Drive, Apt PH1",
-            city="Springfield",
-            state="IL",
-            zip_code="62704",
+            city="Bangalore",
+            state="KA",
+            zip_code="560038",
             is_default=True
         ),
         current_user=demo_user,

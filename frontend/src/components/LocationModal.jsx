@@ -27,7 +27,7 @@ export default function LocationModal() {
     if (isAuthenticated) {
       userApi.getAddresses()
         .then(res => setUserAddresses(res.data))
-        .catch(() => {});
+        .catch(() => { });
     }
   }, [isAuthenticated, isLocationModalOpen]);
 
@@ -37,25 +37,25 @@ export default function LocationModal() {
     {
       label: 'Home',
       iconType: 'home',
-      address: '742 Evergreen Terrace, Apt 4B',
-      city: 'Springfield',
-      zip: '62704',
+      address: '12th Main Road, HAL 2nd Stage, Indiranagar',
+      city: 'Bangalore',
+      zip: '560038',
       eta: '12 - 15 mins'
     },
     {
       label: 'Work / Office',
       iconType: 'work',
-      address: '500 W Monroe St, Suite 1200',
-      city: 'Springfield',
-      zip: '62701',
+      address: 'Prestige Tech Park, Outer Ring Road, Kadubeesanahalli',
+      city: 'Bangalore',
+      zip: '560103',
       eta: '18 - 22 mins'
     },
     {
       label: 'Gym & Fitness',
       iconType: 'gym',
-      address: '1400 S MacArthur Blvd',
-      city: 'Springfield',
-      zip: '62704',
+      address: 'Cult.fit Indiranagar, 100 Feet Road',
+      city: 'Bangalore',
+      zip: '560038',
       eta: '15 - 20 mins'
     }
   ];
@@ -68,8 +68,8 @@ export default function LocationModal() {
       id: preset.id || null,
       label: preset.label,
       address: preset.address || preset.full_address,
-      city: preset.city || 'Springfield',
-      zip: preset.zip || preset.zip_code || '62704',
+      city: preset.city || 'Bangalore',
+      zip: preset.zip || preset.zip_code || '560038',
       eta: preset.eta || '15 mins'
     });
     toast.success(`Delivery address set to ${preset.label}`);
@@ -104,8 +104,8 @@ export default function LocationModal() {
     const newLoc = {
       label: label,
       address: customAddress,
-      city: 'Springfield',
-      zip: zip || '62704',
+      city: 'Bangalore',
+      zip: zip || '560038',
       eta: '15 - 20 mins'
     };
 
@@ -115,9 +115,9 @@ export default function LocationModal() {
           const res = await userApi.updateAddress(editingAddressId, {
             label,
             full_address: customAddress,
-            city: 'Springfield',
-            state: 'IL',
-            zip_code: zip || '62704',
+            city: 'Bangalore',
+            state: 'KA',
+            zip_code: zip || '560038',
             is_default: true
           });
           setUserAddresses(userAddresses.map(a => a.id === editingAddressId ? res.data : a));
@@ -127,9 +127,9 @@ export default function LocationModal() {
           const res = await userApi.createAddress({
             label,
             full_address: customAddress,
-            city: 'Springfield',
-            state: 'IL',
-            zip_code: zip || '62704',
+            city: 'Bangalore',
+            state: 'KA',
+            zip_code: zip || '560038',
             is_default: true
           });
           setUserAddresses([...userAddresses, res.data]);
@@ -205,11 +205,10 @@ export default function LocationModal() {
               key={idx}
               type="button"
               onClick={() => handleSelectPreset(p)}
-              className={`w-full p-3 sm:p-3.5 rounded-2xl border text-left flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 transition-all duration-200 ${
-                deliveryLocation.address === (p.address || p.full_address)
+              className={`w-full p-3 sm:p-3.5 rounded-2xl border text-left flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 transition-all duration-200 ${deliveryLocation.address === (p.address || p.full_address)
                   ? 'border-blue-600 bg-blue-50/80 ring-2 ring-blue-600/30 shadow-md'
                   : 'liquid-glass hover:bg-white/90 hover:shadow-md'
-              }`}
+                }`}
             >
               <div className="flex items-start gap-2.5 sm:gap-3 min-w-0 flex-1">
                 <div className="w-8 h-8 rounded-xl bg-blue-50/80 flex items-center justify-center flex-shrink-0 mt-0.5 border border-blue-200/60">
@@ -293,7 +292,7 @@ export default function LocationModal() {
           <div className="flex gap-2">
             <input
               type="text"
-              placeholder="Zip Code"
+              placeholder="PIN Code"
               value={zip}
               onChange={(e) => setZip(e.target.value)}
               className="w-24 sm:w-1/3 min-w-0 text-xs font-medium px-3 py-2.5 bg-white/80 backdrop-blur border border-white/80 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 shadow-inner"

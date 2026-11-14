@@ -149,11 +149,11 @@ export default function HomePage() {
 
   return (
     <div className="space-y-6 sm:space-y-12 pb-4 md:pb-16">
-      
+
       {/* ── 1. Hero Promo Banner ─────────────────────────────── */}
       <section className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-800 text-white shadow-xl">
         <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]"></div>
-        
+
         {/* Glow circles */}
         <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-blue-400/20 blur-3xl pointer-events-none"></div>
         <div className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-indigo-500/20 blur-3xl pointer-events-none"></div>
@@ -225,11 +225,10 @@ export default function HomePage() {
           {/* All button */}
           <button
             onClick={() => setActiveCategory('all')}
-            className={`relative flex flex-col items-center gap-1.5 sm:gap-2 min-w-[72px] sm:min-w-[84px] p-2 sm:p-2.5 rounded-2xl transition-colors duration-250 ease-out active:scale-95 z-10 flex-shrink-0 ${
-              activeCategory === 'all'
+            className={`relative flex flex-col items-center gap-1.5 sm:gap-2 min-w-[72px] sm:min-w-[84px] p-2 sm:p-2.5 rounded-2xl transition-colors duration-250 ease-out active:scale-95 z-10 flex-shrink-0 ${activeCategory === 'all'
                 ? 'text-white'
                 : 'liquid-glass hover:bg-white text-slate-700 shadow-sm'
-            }`}
+              }`}
           >
             {activeCategory === 'all' && (
               <motion.div
@@ -238,9 +237,8 @@ export default function HomePage() {
                 transition={{ type: 'spring', stiffness: 450, damping: 32 }}
               />
             )}
-            <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center transition-colors duration-250 ease-out ${
-              activeCategory === 'all' ? 'bg-white/20 text-white' : 'bg-slate-100/80 text-slate-700'
-            }`}>
+            <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center transition-colors duration-250 ease-out ${activeCategory === 'all' ? 'bg-white/20 text-white' : 'bg-slate-100/80 text-slate-700'
+              }`}>
               <LayoutGrid className="w-5 h-5" />
             </div>
             <span className="text-[11px] font-bold tracking-tight text-center truncate w-full">All Items</span>
@@ -252,11 +250,10 @@ export default function HomePage() {
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.slug)}
-                className={`relative flex flex-col items-center gap-1.5 sm:gap-2 min-w-[72px] sm:min-w-[84px] p-2 sm:p-2.5 rounded-2xl transition-colors duration-250 ease-out active:scale-95 z-10 flex-shrink-0 ${
-                  isSelected
+                className={`relative flex flex-col items-center gap-1.5 sm:gap-2 min-w-[72px] sm:min-w-[84px] p-2 sm:p-2.5 rounded-2xl transition-colors duration-250 ease-out active:scale-95 z-10 flex-shrink-0 ${isSelected
                     ? 'text-white'
                     : 'liquid-glass hover:bg-white text-slate-700 shadow-sm'
-                }`}
+                  }`}
               >
                 {isSelected && (
                   <motion.div
@@ -265,9 +262,8 @@ export default function HomePage() {
                     transition={{ type: 'spring', stiffness: 450, damping: 32 }}
                   />
                 )}
-                <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl overflow-hidden flex items-center justify-center transition-all duration-250 ease-out ${
-                  isSelected ? 'ring-2 ring-white/60 shadow-sm' : ''
-                }`}>
+                <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl overflow-hidden flex items-center justify-center transition-all duration-250 ease-out ${isSelected ? 'ring-2 ring-white/60 shadow-sm' : ''
+                  }`}>
                   <img
                     src={cat.image_url}
                     alt={cat.name}
@@ -363,9 +359,8 @@ export default function HomePage() {
                 <button
                   key={filter.id}
                   onClick={() => setSmartFilter(filter.id)}
-                  className={`relative px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-bold transition-colors duration-250 ease-out flex items-center gap-1.5 z-10 select-none cursor-pointer whitespace-nowrap flex-shrink-0 ${
-                    isSelected ? 'text-white' : 'text-slate-600 hover:text-slate-900'
-                  }`}
+                  className={`relative px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-bold transition-colors duration-250 ease-out flex items-center gap-1.5 z-10 select-none cursor-pointer whitespace-nowrap flex-shrink-0 ${isSelected ? 'text-white' : 'text-slate-600 hover:text-slate-900'
+                    }`}
                 >
                   {isSelected && (
                     <motion.div
@@ -453,7 +448,7 @@ export default function HomePage() {
       <section className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-10 border border-slate-200/80 shadow-sm">
         <div className="text-center max-w-xl mx-auto mb-5 sm:mb-8">
           <span className="text-[11px] font-extrabold text-blue-600 uppercase tracking-wider">The MiniMart Standard</span>
-          <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 mt-1 font-heading">Why Springfield Loves MiniMart</h2>
+          <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 mt-1 font-heading">Why Bangalore Loves MiniMart</h2>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-6 text-center">

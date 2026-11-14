@@ -28,7 +28,7 @@ def seed_database():
         email="demo@minimart.com",
         full_name="Alex Morgan",
         hashed_password=get_password_hash("customer123"),
-        phone="+1 555-0199",
+        phone="+91 98765 43210",
         role=models.UserRole.customer,
         avatar_url="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=200&q=80"
     )
@@ -40,10 +40,10 @@ def seed_database():
     address = models.Address(
         user_id=demo_user.id,
         label="Home",
-        full_address="742 Evergreen Terrace, Apt 4B",
-        city="Springfield",
-        state="IL",
-        zip_code="62704",
+        full_address="12th Main Road, HAL 2nd Stage, Indiranagar",
+        city="Bangalore",
+        state="KA",
+        zip_code="560038",
         is_default=True
     )
     db.add(address)

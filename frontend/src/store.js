@@ -42,9 +42,9 @@ export const useStore = create((set, get) => ({
   deliveryLocation: {
     id: null,
     label: 'Home',
-    address: '742 Evergreen Terrace, Apt 4B',
-    city: 'Springfield',
-    zip: '62704',
+    address: '12th Main Road, HAL 2nd Stage, Indiranagar',
+    city: 'Bangalore',
+    zip: '560038',
     eta: '12 - 15 mins'
   },
 
