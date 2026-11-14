@@ -160,11 +160,6 @@ export default function HomePage() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-5 min-[375px]:px-5 min-[375px]:py-6 sm:py-16 sm:px-10 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 md:gap-8">
           <div className="w-full max-w-xl text-center md:text-left space-y-2.5 sm:space-y-4">
-            <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-white/15 backdrop-blur-md px-2.5 sm:px-3.5 py-1 rounded-full text-[11px] sm:text-xs font-semibold text-blue-100 ring-1 ring-white/20 shadow-sm max-w-full">
-              <Zap className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-amber-300 fill-amber-300 flex-shrink-0" />
-              <span className="truncate">15-Minute Guaranteed Delivery</span>
-            </div>
-
             <h1 className="hero-heading font-extrabold tracking-tight text-white font-heading">
               Farm-Fresh Groceries, <br className="hidden sm:inline" />
               Delivered in <span className="text-amber-300 underline decoration-amber-300/40">Minutes</span>.
@@ -173,35 +168,6 @@ export default function HomePage() {
             <p className="hero-subtext text-blue-100/90 leading-snug sm:leading-relaxed font-normal max-w-md mx-auto md:mx-0">
               Crisp seasonal produce, warm artisan breads, farm dairy, and premium cuts handpicked with care and chilled to perfection.
             </p>
-
-            <div className="pt-1 sm:pt-2 flex flex-wrap items-center justify-center md:justify-start gap-2 sm:gap-3">
-              <a
-                href="#catalog"
-                className="btn bg-white hover:bg-slate-50 text-blue-800 font-extrabold text-xs sm:text-sm py-2.5 px-4 sm:py-3 sm:px-6 rounded-full shadow-lg hover:shadow-xl transition-all active:scale-95 flex items-center gap-1.5 sm:gap-2 whitespace-nowrap"
-              >
-                <span>Shop Now</span>
-                <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-              </a>
-              <Link
-                to="/deals"
-                className="btn bg-blue-800/60 hover:bg-blue-800 text-white font-bold text-xs sm:text-sm py-2.5 px-4 sm:py-3 sm:px-6 rounded-full backdrop-blur-md ring-1 ring-white/25 transition-all shadow-md active:scale-95 flex items-center gap-1.5 sm:gap-2 whitespace-nowrap"
-              >
-                <Flame className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 fill-amber-400" />
-                <span>View Flash Deals</span>
-              </Link>
-            </div>
-
-            {/* Micro stats */}
-            <div className="pt-2.5 sm:pt-4 flex flex-wrap items-center justify-center md:justify-start gap-x-4 sm:gap-x-6 gap-y-1.5 text-[11px] sm:text-xs text-blue-100/80 font-medium border-t border-white/10">
-              <div className="flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-300 flex-shrink-0" />
-                <span>100% Quality Checked</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <Leaf className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-300 flex-shrink-0" />
-                <span>Zero Plastic Options</span>
-              </div>
-            </div>
           </div>
 
           {/* Hero Graphics / Showcase Card */}
